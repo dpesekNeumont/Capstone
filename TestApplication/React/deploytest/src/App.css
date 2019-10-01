@@ -17,6 +17,10 @@
   color: white;
 }
 
+.logoSize {
+  height: 50px;
+}
+
 .App-link {
   color: #09d3ac;
 }
