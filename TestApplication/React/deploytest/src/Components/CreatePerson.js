@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import personHelper from '../APIControllers/CreatePersonController'
 
 export default class createperson extends Component {
 
@@ -14,9 +14,9 @@ export default class createperson extends Component {
    }
 
    handleClick = () => {
-       fetch(this.state.searchString + this.state.firstname + this.state.lastname)
+        personHelper(this.state.searchString, [this.state.firstname, this.state.lastname])
        .then(response => response.json())
-       .then(data => this.setState({people: data}, () => {}))
+       .then(data => this.setState({people: data}, () => {console.log(data)}))
    }
     
     render() {
@@ -25,11 +25,11 @@ export default class createperson extends Component {
                 <div className="container">
                     <h3>Create A Person</h3>
                     <p>First Name:</p>
-                    <input type="text"/>
+                    <input type="text" className="form-control" onChange={({target: {value: firstname }})=> this.setState({firstname})} value={this.state.firstname.value}/>
                     <p>Last Name:</p>
-                    <input type="text" />
+                    <input type="text" className="form-control" onChange={({target: {value: lastname }})=> this.setState({lastname})} value={this.state.lastname.value}/>
                     <br/>
-                    <input type="submit" />
+                    <input type="submit" onClick={this.handleClick}/>
                 </div>
             </React.Fragment>
         )
