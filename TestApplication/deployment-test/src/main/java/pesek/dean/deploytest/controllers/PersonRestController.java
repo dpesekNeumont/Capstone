@@ -1,5 +1,6 @@
 package pesek.dean.deploytest.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,6 +36,12 @@ public class PersonRestController {
 	public Person getPersonById(@PathVariable int personId, HttpServletRequest request) {
 		Optional<Person> result = personJPARepository.findById(personId);
 		return result.orElseThrow(() -> new NoEntityFoundException(Person.class, personId));
+	}
+	
+	@RequestMapping(path = "/{firstName}/{lastName}", method = RequestMethod.GET)
+	@CrossOrigin
+	public List<Person> getPersonByFirstAndLastName(@PathVariable String firstName, @PathVariable String lastName, HttpServletRequest request) {
+		return personJPARepository.findByFirstNameAndLastName(firstName, lastName);
 	}
 	
 	@RequestMapping(path = "", method = RequestMethod.PATCH)

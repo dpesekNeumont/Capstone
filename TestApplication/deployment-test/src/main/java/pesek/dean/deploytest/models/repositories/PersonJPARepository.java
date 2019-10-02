@@ -1,9 +1,15 @@
 package pesek.dean.deploytest.models.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import pesek.dean.deploytest.models.Person;
 
 public interface PersonJPARepository  extends JpaRepository<Person, Integer>{
-
+	
+	@Query("SELECT p FROM Person p WHERE p.firstName = :firstName AND p.lastName = :lastName")
+	public List<Person> findByFirstNameAndLastName(@Param("firstName")String firstName, @Param("lastName") String lastName);
 }

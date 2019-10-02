@@ -6,6 +6,10 @@ import CreatePerson from './Components/CreatePerson'
 import GetPerson from './Components/GetPerson'
 import UpdatePerson from './Components/UpdatePerson'
 import DeletePerson from './Components/DeletePerson'
+import PersonDetails from './Components/PersonDetails'
+
+// api base string
+// http://localhost:8080/deployTest
 
 export default class App extends Component {
   constructor(props) {
@@ -21,7 +25,7 @@ export default class App extends Component {
   }
 
   componentDidMount(){
-    console.log("Hello world")
+    
   }
 
   render() {
@@ -33,6 +37,7 @@ export default class App extends Component {
           <Route path="/CreatePerson" component={CreatePerson} />
           <Route path="/GetPerson" component={GetPerson} />
           <Route path="/UpdatePerson" component={UpdatePerson} />
+          <Route path="/person/:personId" component={PersonDetails} />
         </BrowserRouter>
       </React.Fragment>
     );

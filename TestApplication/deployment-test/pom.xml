@@ -9,7 +9,7 @@
 	</properties>
 
 	<build>
-		<finalName>exercise</finalName>
+		<finalName>deployTest</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
