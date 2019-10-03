@@ -9,12 +9,12 @@ import DeletePerson from './Components/DeletePerson'
 import PersonDetails from './Components/PersonDetails'
 
 // api base string
-// http://localhost:8080/deployTest
+// http://localhost:8080/person
 
 export default class App extends Component {
   constructor(props) {
     super(props)
-  
+    this.reRender = this.reRender.bind(this)
     this.state = {
        
     }

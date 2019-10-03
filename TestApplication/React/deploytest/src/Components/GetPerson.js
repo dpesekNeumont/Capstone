@@ -7,30 +7,23 @@ export default class getperson extends Component {
         super(props)
     
         this.state = {
-            firstname: '',
-            lastname: '',
-            searchString: 'http://localhost:8080/deployTest/person',
+            searchString: 'http://localhost:8080/person',
             people: []
        }
    }
 
    handleClick = () => {
-       fetch(this.state.searchString + this.state.firstname + this.state.lastname)
+       fetch(this.state.searchString)
        .then(response => response.json())
-       .then(data => this.setState({people: data}, () => {}))
+       .then(data => this.setState({people: data}, () => {console.log(data)}))
    }
     
     render() {
         return (
            <React.Fragment>
                <div className="container">
-                   <h3>Retrieve A Person</h3>
-                   <p>First Name:</p>
-                   <input type="text" />
-                   <p>Last Name:</p>
-                   <input type="text" />
-                   <br/>
-                   <input type="submit" />
+                   <h3>Get All People</h3>
+                   <input type="submit" onClick={this.handleClick}/>
 
                    <div className="searchResults">
                         <h3>Search Results:</h3>
@@ -39,8 +32,8 @@ export default class getperson extends Component {
                                 return (
                                     <Link to={"/person/" + p.id} className="nav-link-item" key={index}>
                                         <div className="personQuickInfoDisplay">
-                                            <p>First Name: {p.firstname}</p>
-                                            <p>Last Name: {p.lastname}</p>
+                                            <p>First Name: {p.firstName}</p>
+                                            <p>Last Name: {p.lastName}</p>
                                         </div>
                                     </Link>
                                 )

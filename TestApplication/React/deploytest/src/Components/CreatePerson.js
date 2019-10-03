@@ -9,12 +9,13 @@ export default class createperson extends Component {
         this.state = {
             firstname: '',
             lastname: '',
-            createString: 'http://localhost:8080/deployTest/person'
+            createString: 'http://localhost:8080/person'
        }
    }
 
    handleClick = () => {
-        personHelper(this.state.searchString, [this.state.firstname, this.state.lastname])
+       let person = {"firstName": this.state.firstname, "lastName": this.state.lastname}
+        personHelper(this.state.createString, person)
        .then(response => response.json())
        .then(data => this.setState({people: data}, () => {console.log(data)}))
    }

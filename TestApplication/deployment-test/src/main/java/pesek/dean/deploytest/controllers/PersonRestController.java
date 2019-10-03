@@ -44,6 +44,12 @@ public class PersonRestController {
 		return personJPARepository.findByFirstNameAndLastName(firstName, lastName);
 	}
 	
+	@RequestMapping(path = "", method = RequestMethod.GET)
+	@CrossOrigin
+	public List<Person> getAllPeople() {
+		return personJPARepository.findAll();
+	}
+	
 	@RequestMapping(path = "", method = RequestMethod.PATCH)
 	public boolean updatePerson(@RequestBody Person person, HttpServletRequest request) {
 		personJPARepository.saveAndFlush(person);

@@ -1,5 +1,5 @@
 export default function personHelper(url, data) {
-    console.log(data)
+    console.log(JSON.stringify(data))
     return fetch(url, {
         method: 'POST',
         headers: {

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 
+import personHelper from '../APIControllers/GetPeopleByFirstAndLast'
+
 export default class deleteperosn extends Component {
 
     constructor(props) {
@@ -9,13 +11,13 @@ export default class deleteperosn extends Component {
         this.state = {
             firstname: '',
             lastname: '',
-            searchString: 'http://localhost:8080/deployTest/person',
+            searchString: 'http://localhost:8080/person',
             people: []
        }
    }
 
    handleClick = () => {
-       fetch(this.state.searchString + this.state.firstname + this.state.lastname)
+        personHelper(this.state.searchString, this.state.firstname, this.state.lastname)
        .then(response => response.json())
        .then(data => this.setState({people: data}, () => {}))
    }
@@ -26,11 +28,11 @@ export default class deleteperosn extends Component {
                 <div className="container">
                     <h3>Delete A Person</h3>
                     <p>First Name:</p>
-                    <input type="text" />
+                    <input type="text" onChange={({target: {value: firstname }})=> this.setState({firstname})} value={this.state.firstname.value}/>
                     <p>Last Name:</p>
-                    <input type="text" />
+                    <input type="text" onChange={({target: {value: lastname }})=> this.setState({lastname})} value={this.state.lastname.value}/>
                     <br/>
-                    <input type="submit" />
+                    <input type="submit" onClick={this.handleClick}/>
 
                     <div className="searchResults">
                         <h3>Search Results:</h3>
@@ -39,8 +41,8 @@ export default class deleteperosn extends Component {
                                 return (
                                     <Link to={"/person/" + p.id} className="nav-link-item" key={index}>
                                         <div className="personQuickInfoDisplay">
-                                            <p>First Name: {p.firstname}</p>
-                                            <p>Last Name: {p.lastname}</p>
+                                            <p>First Name: {p.firstName}</p>
+                                            <p>Last Name: {p.lastName}</p>
                                         </div>
                                     </Link>
                                 )
