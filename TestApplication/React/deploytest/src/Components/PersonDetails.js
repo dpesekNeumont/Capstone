@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 
+import personUpdater from '../APIControllers/UpdatePersonController'
+import personDeleter from '../APIControllers/DeletePersonController'
+
 export default class PersonDetails extends Component {
     
     constructor(props) {
@@ -7,15 +10,18 @@ export default class PersonDetails extends Component {
     
         this.state = {
             person: {
+                'id': 0,
                 'firstName': '',
                 'lastName': ''
             },
-             url: 'http://localhost:8080/person/'
+            firstName: '',
+            lastName: '',
+             url: 'http://localhost:8080/person'
         }
     }
     
     componentDidMount() {
-        fetch(this.state.url + this.props.match.params.personId, {
+        fetch(this.state.url + '/' + this.props.match.params.personId, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -30,11 +36,16 @@ export default class PersonDetails extends Component {
     }
 
     handleSubmit = () => {
-
+        let guy = {
+            "id": this.state.person.id,
+            "firstName": this.state.firstName,
+            "lastName": this.state.lastName
+        }
+        personUpdater(this.state.url, guy)
     }
 
     handleDelete = () => {
-
+        personDeleter(this.state.url, this.state.person.id)
     }
 
 
@@ -44,11 +55,11 @@ export default class PersonDetails extends Component {
                 <div className='personDetailsDisplay'>
                     <span>
                         <p>First Name: </p>
-                        <input type='text' value={this.state.person.firstName} onChange={({target: {value: firstname }})=> this.setState({firstname})} />
+                        <input type='text' placeholder={this.state.person.firstName} onChange={({target: {value: firstName }})=> this.setState({firstName})} value={this.state.firstName.value}/>
                     </span>
                     <span>
                         <p>Last Name: </p>
-                        <input type='text' value={this.state.person.lastName} onChange={({target: {value: lastname }})=> this.setState({lastname})} />
+                        <input type='text' placeholder={this.state.person.lastName} onChange={({target: {value: lastName }})=> this.setState({lastName})} value={this.state.lastName.value}/>
                     </span>
                 </div>
                 <input type='submit' value='submit changes' onClick={this.handleSubmit} />

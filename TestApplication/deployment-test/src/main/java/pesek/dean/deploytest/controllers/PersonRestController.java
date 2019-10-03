@@ -51,12 +51,14 @@ public class PersonRestController {
 	}
 	
 	@RequestMapping(path = "", method = RequestMethod.PATCH)
+	@CrossOrigin
 	public boolean updatePerson(@RequestBody Person person, HttpServletRequest request) {
 		personJPARepository.saveAndFlush(person);
 		return true;
 	}
 	
 	@RequestMapping(path = "", method = RequestMethod.DELETE)
+	@CrossOrigin
 	public boolean deletePerson(@RequestBody int id, HttpServletRequest request) {
 		personJPARepository.deleteById(id);
 		return true;
