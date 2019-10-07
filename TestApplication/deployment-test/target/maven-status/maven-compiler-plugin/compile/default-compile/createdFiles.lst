@@ -1,0 +1,5 @@
+pesek\dean\deploytest\DeployTestLogApplication.class
+pesek\dean\deploytest\exceptions\NoEntityFoundException.class
+pesek\dean\deploytest\models\Person.class
+pesek\dean\deploytest\controllers\PersonRestController.class
+pesek\dean\deploytest\models\repositories\PersonJPARepository.class

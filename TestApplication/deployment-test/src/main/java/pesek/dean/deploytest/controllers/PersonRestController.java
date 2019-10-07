@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,12 @@ public class PersonRestController {
 
 	@Autowired
 	private PersonJPARepository personJPARepository;
+	
+	@GetMapping(path = "/hello")
+	@CrossOrigin
+	public String hello() {
+		return "Hello, testing testing 1 2 3";
+	}
 	
 	@RequestMapping(path = "", method = RequestMethod.POST)
 	@CrossOrigin
