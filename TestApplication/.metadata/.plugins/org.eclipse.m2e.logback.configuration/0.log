@@ -2572,3 +2572,11 @@ org.eclipse.core.runtime.OperationCanceledException: null
 2019-10-05 18:26:40,064 [Worker-64: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2019-10-05 18:26:40,064 [Worker-64: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Dean\Neumont\Testing Deployment\Yet Another Test\react-and-spring\src\test\resources
 2019-10-07 12:28:54,779 [Worker-329: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: pesek.dean:deployment-test:0.0.1-SNAPSHOT @ C:\Users\Dean\Neumont\Capstone\TestApplication\deployment-test\pom.xml.
+2019-10-07 12:28:58,104 [Worker-329: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-10-07 12:28:58,105 [Worker-329: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-10-07 12:28:58,121 [Worker-329: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-10-07 12:28:58,122 [Worker-329: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-10-07 12:28:58,122 [Worker-329: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Dean\Neumont\Capstone\TestApplication\deployment-test\src\test\resources
+2019-10-07 12:28:58,122 [Worker-329: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of deployment-test
+2019-10-07 12:28:58,122 [Worker-329: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for deployment-test
+2019-10-07 12:28:58,124 [Worker-329: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
