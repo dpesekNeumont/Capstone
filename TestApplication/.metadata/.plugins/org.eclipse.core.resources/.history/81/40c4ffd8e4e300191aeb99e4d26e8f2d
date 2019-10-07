@@ -1,0 +1,5 @@
+package pesek.dean.deploytest.exceptions;
+
+public class NoEntityFoundException {
+
+}

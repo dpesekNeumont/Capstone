@@ -1,0 +1,62 @@
+package pesek.dean.deploytest.controllers;
+
+import java.util.List;
+import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import pesek.dean.deploytest.exceptions.NoEntityFoundException;
+import pesek.dean.deploytest.models.Person;
+import pesek.dean.deploytest.models.repositories.PersonJPARepository;
+
+@RestController
+@RequestMapping("/person")
+public class PersonRestController {
+
+	@Autowired
+	private PersonJPARepository personJPARepository;
+	
+	@RequestMapping(path = "", method = RequestMethod.POST)
+	@CrossOrigin
+	public Integer createPerson(@RequestBody Person person, HttpServletRequest request) {
+		personJPARepository.saveAndFlush(person);
+		return person.getId();
+	}
+	
+	@RequestMapping(path = "/{personId}", method = RequestMethod.GET)
+	@CrossOrigin
+	public Person getPersonById(@PathVariable int personId, HttpServletRequest request) {
+		Optional<Person> result = personJPARepository.findById(personId);
+		return result.orElseThrow(() -> new NoEntityFoundException(Person.class, personId));
+	}
+	
+	@RequestMapping(path = "/{firstName}/{lastName}", method = RequestMethod.GET)
+	@CrossOrigin
+	public List<Person> getPersonByFirstAndLastName(@PathVariable String firstName, @PathVariable String lastName, HttpServletRequest request) {
+		return personJPARepository.findByFirstNameAndLastName(firstName, lastName);
+	}
+	
+	public List<Person> getAllPeople() {
+		return personJPARepository.findAll();
+	}
+	
+	@RequestMapping(path = "", method = RequestMethod.PATCH)
+	public boolean updatePerson(@RequestBody Person person, HttpServletRequest request) {
+		personJPARepository.saveAndFlush(person);
+		return true;
+	}
+	
+	@RequestMapping(path = "", method = RequestMethod.DELETE)
+	public boolean deletePerson(@RequestBody int id, HttpServletRequest request) {
+		personJPARepository.deleteById(id);
+		return true;
+	}
+}

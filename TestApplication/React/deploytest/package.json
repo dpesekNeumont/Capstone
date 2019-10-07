@@ -2,7 +2,14 @@
   "name": "deploytest",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "5.7.1",
+    "node": "9.5.0"
+  },
   "dependencies": {
+    "@aws-amplify/api": "^1.1.3",
+    "@aws-amplify/pubsub": "^1.1.2",
+    "aws-amplify-react": "^2.4.4",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-router-dom": "^5.1.2",

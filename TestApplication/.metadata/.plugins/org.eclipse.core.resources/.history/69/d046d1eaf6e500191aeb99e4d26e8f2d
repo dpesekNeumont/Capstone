@@ -1,0 +1,9 @@
+spring.datasource.url = deploytest.camltk6la8zt.us-east-1.rds.amazonaws.com
+spring.datasource.username = root
+spring.datasource.password = P@ssw0rd
+spring.jpa.show-sql = true
+spring.jpa.hibernate.ddl-auto = update
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MariaDBDialect
+spring.datasource.driver-class-name = org.mariadb.jdbc.Driver
+spring.jackson.serialization.fail-on-empty-beans = false
+spring.jackson.default-property-inclusion = non_empty

@@ -1,0 +1,5 @@
+package pesek.dean.deploytest.models.repositories;
+
+public class PersonJPARepository {
+
+}

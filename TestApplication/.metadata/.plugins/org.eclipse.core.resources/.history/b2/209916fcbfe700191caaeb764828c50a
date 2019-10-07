@@ -1,0 +1,8 @@
+package pesek.dean.deployTesting;
+ abstract
+public class HelloController {
+    
+    public String hello() {
+        return "Hello";
+    }
+}
