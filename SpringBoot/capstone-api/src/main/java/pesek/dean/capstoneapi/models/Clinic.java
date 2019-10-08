@@ -2,10 +2,24 @@ package pesek.dean.capstoneapi.models;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="clinic")
 public class Clinic {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	@Column(nullable=false)
 	private String name;
+	@Column(nullable=false)
 	private List<Doctor> doctors;
+	@Column(nullable=false)
 	private int numOfRooms;
 
 	public Clinic() {
