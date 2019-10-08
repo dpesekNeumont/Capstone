@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -31,13 +32,16 @@ public class Patient {
 	private PhoneNumber primaryPhoneNumber;
 	@Column(nullable = true)
 	private PhoneNumber secondaryPhoneNumber;
+	@Column(nullable = false)
+	@ManyToOne
+	private Doctor doctor;
 
 	public Patient() {
 
 	}
 
 	public Patient(String firstName, String lastName, Email primaryEmail, Address primaryAddress,
-			PhoneNumber primaryPhoneNumber) {
+			PhoneNumber primaryPhoneNumber, Doctor doctor) {
 		setFirstName(firstName);
 		setLastName(lastName);
 		setPrimaryEmail(primaryEmail);
@@ -46,98 +50,98 @@ public class Patient {
 	}
 
 	public Patient(String firstName, String middleInitial, String lastName, Email primaryEmail, Address primaryAddress,
-			PhoneNumber primaryPhoneNumber) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber);
+			PhoneNumber primaryPhoneNumber, Doctor doctor) {
+		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setMiddlenitial(middleInitial);
 	}
 
 	public Patient(String firstName, String lastName, Email primaryEmail, Email secondaryEmail, Address primaryAddress,
-			PhoneNumber primaryPhoneNumber) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber);
+			PhoneNumber primaryPhoneNumber, Doctor doctor) {
+		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setSecondaryEmail(secondaryEmail);
 	}
 
 	public Patient(String firstName, String lastName, Email primaryEmail, Address primaryAddress,
-			Address secondaryAddress, PhoneNumber primaryPhoneNumber) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber);
+			Address secondaryAddress, PhoneNumber primaryPhoneNumber, Doctor doctor) {
+		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setSecondaryAddress(secondaryAddress);
 	}
 
 	public Patient(String firstName, String lastName, Email primaryEmail, Address primaryAddress,
-			PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber);
+			PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber, Doctor doctor) {
+		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setSecondaryPhoneNumber(secondaryPhoneNumber);
 	}
 
 	public Patient(String firstName, String middleInitial, String lastName, Email primaryEmail, Email secondaryEmail,
-			Address primaryAddress, PhoneNumber primaryPhoneNumber) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber);
+			Address primaryAddress, PhoneNumber primaryPhoneNumber, Doctor doctor) {
+		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setMiddlenitial(middleInitial);
 		setSecondaryEmail(secondaryEmail);
 	}
 
 	public Patient(String firstName, String middleInitial, String lastName, Email primaryEmail, Address primaryAddress,
-			Address secondaryAddress, PhoneNumber primaryPhoneNumber) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber);
+			Address secondaryAddress, PhoneNumber primaryPhoneNumber, Doctor doctor) {
+		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setMiddlenitial(middleInitial);
 		setSecondaryAddress(secondaryAddress);
 	}
 
 	public Patient(String firstName, String middleInitial, String lastName, Email primaryEmail, Address primaryAddress,
-			PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber);
+			PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber, Doctor doctor) {
+		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setSecondaryPhoneNumber(secondaryPhoneNumber);
 		setMiddlenitial(middleInitial);
 	}
 
 	public Patient(String firstName, String lastName, Email primaryEmail, Email secondaryEmail, Address primaryAddress,
-			Address secondaryAddress, PhoneNumber primaryPhoneNumber) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber);
+			Address secondaryAddress, PhoneNumber primaryPhoneNumber, Doctor doctor) {
+		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setSecondaryEmail(secondaryEmail);
 		setSecondaryAddress(secondaryAddress);
 	}
 
 	public Patient(String firstName, String lastName, Email primaryEmail, Email secondaryEmail, Address primaryAddress,
-			PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber);
+			PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber, Doctor doctor) {
+		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setSecondaryEmail(secondaryEmail);
 		setSecondaryPhoneNumber(secondaryPhoneNumber);
 	}
 
 	public Patient(String firstName, String lastName, Email primaryEmail, Address primaryAddress,
-			Address secondaryAddress, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber);
+			Address secondaryAddress, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber, Doctor doctor) {
+		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setSecondaryAddress(secondaryAddress);
 		setSecondaryPhoneNumber(secondaryPhoneNumber);
 	}
 
 	public Patient(String firstName, String middleInitial, String lastName, Email primaryEmail, Email secondaryEmail,
-			Address primaryAddress, Address secondaryAddress, PhoneNumber primaryPhoneNumber) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber);
+			Address primaryAddress, Address secondaryAddress, PhoneNumber primaryPhoneNumber, Doctor doctor) {
+		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setMiddlenitial(middleInitial);
 		setSecondaryAddress(secondaryAddress);
 		setSecondaryEmail(secondaryEmail);
 	}
 
 	public Patient(String firstName, String middleInital, String lastName, Email primaryEmail, Email secondaryEmail,
-			Address primaryAddress, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber);
+			Address primaryAddress, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber, Doctor doctor) {
+		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setMiddlenitial(middleInital);
 		setSecondaryEmail(secondaryEmail);
 		setSecondaryPhoneNumber(secondaryPhoneNumber);
 	}
 
 	public Patient(String firstName, String middleInitial, String lastName, Email primaryEmail, Address primaryAddress,
-			Address secondaryAddress, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber);
+			Address secondaryAddress, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber, Doctor doctor) {
+		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setMiddlenitial(middleInitial);
 		setSecondaryAddress(secondaryAddress);
 		setSecondaryPhoneNumber(secondaryPhoneNumber);
 	}
 
 	public Patient(String firstName, String lastName, Email primaryEmail, Email secondaryEmail, Address primaryAddress,
-			Address secondaryAddress, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber);
+			Address secondaryAddress, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber, Doctor doctor) {
+		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setSecondaryEmail(secondaryEmail);
 		setSecondaryAddress(secondaryAddress);
 		setSecondaryPhoneNumber(secondaryPhoneNumber);
@@ -145,8 +149,8 @@ public class Patient {
 
 	public Patient(String firstName, String middleInitial, String lastName, Email primaryEmail, Email secondaryEmail,
 			Address primaryAddress, Address secondaryAddress, PhoneNumber primaryPhoneNumber,
-			PhoneNumber secondaryPhoneNumber) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber);
+			PhoneNumber secondaryPhoneNumber, Doctor doctor) {
+		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setMiddlenitial(middleInitial);
 		setSecondaryEmail(secondaryEmail);
 		setSecondaryAddress(secondaryAddress);
@@ -264,6 +268,18 @@ public class Patient {
 	public void setSecondaryPhoneNumber(PhoneNumber secondaryPhoneNumber) {
 		if (secondaryPhoneNumber != null)
 			this.secondaryPhoneNumber = secondaryPhoneNumber;
+		else {
+			// throw input exception
+		}
+	}
+
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(Doctor doctor) {
+		if (doctor != null)
+			this.doctor = doctor;
 		else {
 			// throw input exception
 		}

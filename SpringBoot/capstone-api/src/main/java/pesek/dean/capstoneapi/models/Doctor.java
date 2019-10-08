@@ -1,37 +1,64 @@
 package pesek.dean.capstoneapi.models;
 
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "doctor")
 public class Doctor {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	@Column(nullable = false)
 	private String firstName;
+	@Column(nullable = false)
 	private String lastName;
+	@Column(nullable = false)
 	private PhoneNumber primaryPhoneNumber;
+	@Column(nullable = true)
 	private PhoneNumber secondaryPhoneNumber;
+	@Column(nullable = false)
 	private Email primaryEmail;
+	@Column(nullable = true)
 	private Email secondaryEmail;
+	@Column(nullable = true)
+	@OneToMany
+	private List<Patient> patients;
+	@Column(nullable = false)
+	@ManyToOne
+	private Clinic clinic;
 
 	public Doctor() {
 
 	}
 
-	public Doctor(String firstName, String lastName, PhoneNumber primaryPhoneNumber, Email primaryEmail) {
+	public Doctor(String firstName, String lastName, PhoneNumber primaryPhoneNumber, Email primaryEmail, Clinic clinic) {
 
 	}
 
 	public Doctor(String firstName, String lastName, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber,
-			Email primaryEmail) {
-		this(firstName, lastName, primaryPhoneNumber, primaryEmail);
+			Email primaryEmail, Clinic clinic) {
+		this(firstName, lastName, primaryPhoneNumber, primaryEmail, clinic);
 		setSecondaryPhoneNumber(secondaryPhoneNumber);
 	}
 
 	public Doctor(String firstName, String lastName, PhoneNumber primaryPhoneNumber, Email primaryEmail,
-			Email secondaryEmail) {
-		this(firstName, lastName, primaryPhoneNumber, primaryEmail);
+			Email secondaryEmail, Clinic clinic) {
+		this(firstName, lastName, primaryPhoneNumber, primaryEmail, clinic);
 		setSecondaryEmail(secondaryEmail);
 	}
 
 	public Doctor(String firstName, String lastName, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber,
-			Email primaryEmail, Email secondaryEmail) {
-		this(firstName, lastName, primaryPhoneNumber, primaryEmail);
+			Email primaryEmail, Email secondaryEmail, Clinic clinic) {
+		this(firstName, lastName, primaryPhoneNumber, primaryEmail, clinic);
 		setSecondaryEmail(secondaryEmail);
 		setSecondaryPhoneNumber(secondaryPhoneNumber);
 	}
@@ -111,6 +138,30 @@ public class Doctor {
 	public void setSecondaryEmail(Email secondaryEmail) {
 		if (secondaryEmail != null)
 			this.secondaryEmail = secondaryEmail;
+		else {
+			// throw input exception
+		}
+	}
+
+	public Clinic getClinic() {
+		return clinic;
+	}
+
+	public void setClinic(Clinic clinic) {
+		if (clinic != null)
+			this.clinic = clinic;
+		else {
+			// throw input exception
+		}
+	}
+
+	public List<Patient> getPatients() {
+		return patients;
+	}
+
+	public void setPatients(List<Patient> patients) {
+		if (patients != null && patients.size() > 0)
+			this.patients = patients;
 		else {
 			// throw input exception
 		}
