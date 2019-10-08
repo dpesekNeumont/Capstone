@@ -20,6 +20,10 @@ public class PhoneNumber {
 	@Column(nullable=false)
 	private String lastFour;
 
+	public PhoneNumber() {
+		
+	}
+	
 	public PhoneNumber(String areaCode, String middleNums, String lastFour) {
 		if (areaCode.length() == 3 && middleNums.length() == 3 && lastFour.length() == 4) {
 			setAreaCode(areaCode);
