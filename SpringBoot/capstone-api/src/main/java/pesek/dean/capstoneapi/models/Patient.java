@@ -1,15 +1,35 @@
 package pesek.dean.capstoneapi.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="patient")
 public class Patient {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+	@Column(nullable=false)
 	private String firstName;
+	@Column(nullable=true)
 	private String middlenitial;
+	@Column(nullable=false)
 	private String lastName;
+	@Column(nullable=false)
 	private Email primaryEmail;
+	@Column(nullable=true)
 	private Email secondaryEmail;
+	@Column(nullable=false)
 	private Address privaryAddress;
+	@Column(nullable=true)
 	private Address secondaryAddress;
+	@Column(nullable=false)
 	private PhoneNumber primaryPhoneNumber;
+	@Column(nullable=true)
 	private PhoneNumber secondaryPhoneNumber;
 	
 	public Patient() {
