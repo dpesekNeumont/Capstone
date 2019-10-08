@@ -15,6 +15,10 @@ public class Patient {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@Column(nullable = false)
+	private String username;
+	@Column(nullable = false)
+	private String password;
+	@Column(nullable = false)
 	private String firstName;
 	@Column(nullable = true)
 	private String middlenitial;
@@ -40,117 +44,119 @@ public class Patient {
 
 	}
 
-	public Patient(String firstName, String lastName, Email primaryEmail, Address primaryAddress,
+	public Patient(String username, String password, String firstName, String lastName, Email primaryEmail, Address primaryAddress,
 			PhoneNumber primaryPhoneNumber, Doctor doctor) {
 		setFirstName(firstName);
 		setLastName(lastName);
 		setPrimaryEmail(primaryEmail);
 		setPrivaryAddress(primaryAddress);
 		setPrimaryPhoneNumber(primaryPhoneNumber);
+		setUsername(username);
+		setPassword(password);
 	}
 
-	public Patient(String firstName, String middleInitial, String lastName, Email primaryEmail, Address primaryAddress,
+	public Patient(String username, String password, String firstName, String middleInitial, String lastName, Email primaryEmail, Address primaryAddress,
 			PhoneNumber primaryPhoneNumber, Doctor doctor) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
+		this(username, password, firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setMiddlenitial(middleInitial);
 	}
 
-	public Patient(String firstName, String lastName, Email primaryEmail, Email secondaryEmail, Address primaryAddress,
+	public Patient(String username, String password, String firstName, String lastName, Email primaryEmail, Email secondaryEmail, Address primaryAddress,
 			PhoneNumber primaryPhoneNumber, Doctor doctor) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
+		this(username, password, firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setSecondaryEmail(secondaryEmail);
 	}
 
-	public Patient(String firstName, String lastName, Email primaryEmail, Address primaryAddress,
+	public Patient(String username, String password, String firstName, String lastName, Email primaryEmail, Address primaryAddress,
 			Address secondaryAddress, PhoneNumber primaryPhoneNumber, Doctor doctor) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
+		this(username, password, firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setSecondaryAddress(secondaryAddress);
 	}
 
-	public Patient(String firstName, String lastName, Email primaryEmail, Address primaryAddress,
+	public Patient(String username, String password, String firstName, String lastName, Email primaryEmail, Address primaryAddress,
 			PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber, Doctor doctor) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
+		this(username, password, firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setSecondaryPhoneNumber(secondaryPhoneNumber);
 	}
 
-	public Patient(String firstName, String middleInitial, String lastName, Email primaryEmail, Email secondaryEmail,
+	public Patient(String username, String password, String firstName, String middleInitial, String lastName, Email primaryEmail, Email secondaryEmail,
 			Address primaryAddress, PhoneNumber primaryPhoneNumber, Doctor doctor) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
+		this(username, password, firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setMiddlenitial(middleInitial);
 		setSecondaryEmail(secondaryEmail);
 	}
 
-	public Patient(String firstName, String middleInitial, String lastName, Email primaryEmail, Address primaryAddress,
+	public Patient(String username, String password, String firstName, String middleInitial, String lastName, Email primaryEmail, Address primaryAddress,
 			Address secondaryAddress, PhoneNumber primaryPhoneNumber, Doctor doctor) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
+		this(username, password, firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setMiddlenitial(middleInitial);
 		setSecondaryAddress(secondaryAddress);
 	}
 
-	public Patient(String firstName, String middleInitial, String lastName, Email primaryEmail, Address primaryAddress,
+	public Patient(String username, String password, String firstName, String middleInitial, String lastName, Email primaryEmail, Address primaryAddress,
 			PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber, Doctor doctor) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
+		this(username, password, firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setSecondaryPhoneNumber(secondaryPhoneNumber);
 		setMiddlenitial(middleInitial);
 	}
 
-	public Patient(String firstName, String lastName, Email primaryEmail, Email secondaryEmail, Address primaryAddress,
+	public Patient(String username, String password, String firstName, String lastName, Email primaryEmail, Email secondaryEmail, Address primaryAddress,
 			Address secondaryAddress, PhoneNumber primaryPhoneNumber, Doctor doctor) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
+		this(username, password, firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setSecondaryEmail(secondaryEmail);
 		setSecondaryAddress(secondaryAddress);
 	}
 
-	public Patient(String firstName, String lastName, Email primaryEmail, Email secondaryEmail, Address primaryAddress,
+	public Patient(String username, String password, String firstName, String lastName, Email primaryEmail, Email secondaryEmail, Address primaryAddress,
 			PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber, Doctor doctor) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
+		this(username, password, firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setSecondaryEmail(secondaryEmail);
 		setSecondaryPhoneNumber(secondaryPhoneNumber);
 	}
 
-	public Patient(String firstName, String lastName, Email primaryEmail, Address primaryAddress,
+	public Patient(String username, String password, String firstName, String lastName, Email primaryEmail, Address primaryAddress,
 			Address secondaryAddress, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber, Doctor doctor) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
+		this(username, password, firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setSecondaryAddress(secondaryAddress);
 		setSecondaryPhoneNumber(secondaryPhoneNumber);
 	}
 
-	public Patient(String firstName, String middleInitial, String lastName, Email primaryEmail, Email secondaryEmail,
+	public Patient(String username, String password, String firstName, String middleInitial, String lastName, Email primaryEmail, Email secondaryEmail,
 			Address primaryAddress, Address secondaryAddress, PhoneNumber primaryPhoneNumber, Doctor doctor) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
+		this(username, password, firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setMiddlenitial(middleInitial);
 		setSecondaryAddress(secondaryAddress);
 		setSecondaryEmail(secondaryEmail);
 	}
 
-	public Patient(String firstName, String middleInital, String lastName, Email primaryEmail, Email secondaryEmail,
+	public Patient(String username, String password, String firstName, String middleInital, String lastName, Email primaryEmail, Email secondaryEmail,
 			Address primaryAddress, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber, Doctor doctor) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
+		this(username, password, firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setMiddlenitial(middleInital);
 		setSecondaryEmail(secondaryEmail);
 		setSecondaryPhoneNumber(secondaryPhoneNumber);
 	}
 
-	public Patient(String firstName, String middleInitial, String lastName, Email primaryEmail, Address primaryAddress,
+	public Patient(String username, String password, String firstName, String middleInitial, String lastName, Email primaryEmail, Address primaryAddress,
 			Address secondaryAddress, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber, Doctor doctor) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
+		this(username, password, firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setMiddlenitial(middleInitial);
 		setSecondaryAddress(secondaryAddress);
 		setSecondaryPhoneNumber(secondaryPhoneNumber);
 	}
 
-	public Patient(String firstName, String lastName, Email primaryEmail, Email secondaryEmail, Address primaryAddress,
+	public Patient(String username, String password, String firstName, String lastName, Email primaryEmail, Email secondaryEmail, Address primaryAddress,
 			Address secondaryAddress, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber, Doctor doctor) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
+		this(username, password, firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setSecondaryEmail(secondaryEmail);
 		setSecondaryAddress(secondaryAddress);
 		setSecondaryPhoneNumber(secondaryPhoneNumber);
 	}
 
-	public Patient(String firstName, String middleInitial, String lastName, Email primaryEmail, Email secondaryEmail,
+	public Patient(String username, String password, String firstName, String middleInitial, String lastName, Email primaryEmail, Email secondaryEmail,
 			Address primaryAddress, Address secondaryAddress, PhoneNumber primaryPhoneNumber,
 			PhoneNumber secondaryPhoneNumber, Doctor doctor) {
-		this(firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
+		this(username, password, firstName, lastName, primaryEmail, primaryAddress, primaryPhoneNumber, doctor);
 		setMiddlenitial(middleInitial);
 		setSecondaryEmail(secondaryEmail);
 		setSecondaryAddress(secondaryAddress);
@@ -280,6 +286,30 @@ public class Patient {
 	public void setDoctor(Doctor doctor) {
 		if (doctor != null)
 			this.doctor = doctor;
+		else {
+			// throw input exception
+		}
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		if (!username.isEmpty() && username != null)
+			this.username = username;
+		else {
+			// throw input exception
+		}
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		if (!password.isEmpty() && password != null)
+			this.password = password;
 		else {
 			// throw input exception
 		}
