@@ -41,7 +41,11 @@ public class Doctor {
 	}
 
 	public Doctor(String firstName, String lastName, PhoneNumber primaryPhoneNumber, Email primaryEmail, Clinic clinic) {
-
+		setFirstName(firstName);
+		setLastName(lastName);
+		setPrimaryEmail(primaryEmail);
+		setPrimaryPhoneNumber(primaryPhoneNumber);
+		setClinic(clinic);
 	}
 
 	public Doctor(String firstName, String lastName, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber,
