@@ -26,6 +26,7 @@ export default class deleteperosn extends Component {
         return (
             <React.Fragment>
                 <div className="container">
+                <div className="container">
                     <h3>Delete A Person</h3>
                     <p>First Name:</p>
                     <input type="text" onChange={({target: {value: firstname }})=> this.setState({firstname})} value={this.state.firstname.value}/>
@@ -49,6 +50,7 @@ export default class deleteperosn extends Component {
                             })
                         }
                     </div>
+                </div>
                 </div>
             </React.Fragment>
         )
