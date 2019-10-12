@@ -8,4 +8,9 @@ import pesek.dean.capstoneapi.models.Address;
 import pesek.dean.capstoneapi.models.PhoneNumber;
 
 public interface PhoneNumberJpaRepository extends JpaRepository<PhoneNumber, Integer>{
+	@Query("SELECT a FROM Address WHERE a.patient = :patientId")
+	Address findByPatient(@Param("patientId")int patientId);
+	
+	@Query("SELECT a FROM Address WHERE a.doctor = :dotcorId")
+	Address findByDoctor(@Param("dotcorId")int dotcorId);
 }
