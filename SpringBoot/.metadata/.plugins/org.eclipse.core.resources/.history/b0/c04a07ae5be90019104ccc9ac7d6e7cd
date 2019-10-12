@@ -1,0 +1,8 @@
+package pesek.dean.capstoneapi.models;
+
+public class PhoneNumber {
+	private int id;
+	private String areaCode;
+	private String middleNums;
+	private String lastFour;
+}

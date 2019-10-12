@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,18 +22,19 @@ public class Doctor {
 	private String firstName;
 	@Column(nullable = false)
 	private String lastName;
-	@Column(nullable = false)
+	@OneToOne
 	private PhoneNumber primaryPhoneNumber;
-	@Column(nullable = true)
+	@OneToOne
 	private PhoneNumber secondaryPhoneNumber;
-	@Column(nullable = false)
+	@OneToOne
 	private Email primaryEmail;
-	@Column(nullable = true)
+	@OneToOne
 	private Email secondaryEmail;
 	@Column(nullable = true)
 	@OneToMany
 	private List<Patient> patients;
-	@Column(nullable = false)
+	@OneToMany
+	private List<Appointment> appointments;
 	@ManyToOne
 	private Clinic clinic;
 
@@ -169,5 +171,13 @@ public class Doctor {
 		else {
 			// throw input exception
 		}
+	}
+
+	public List<Appointment> getAppointments() {
+		return appointments;
+	}
+
+	public void setAppointments(List<Appointment> appointments) {
+		this.appointments = appointments;
 	}
 }

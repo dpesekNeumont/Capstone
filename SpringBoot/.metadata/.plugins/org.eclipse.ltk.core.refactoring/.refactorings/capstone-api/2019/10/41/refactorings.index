@@ -1,0 +1,6 @@
+1570490954642	Move 'mvnw.cmd' to 'capstone-api'
+1570490962606	Move 'mvnw' to 'capstone-api'
+1570570563833	Encapsulate field 'clinic'
+1570570598655	Encapsulate field 'patients'
+1570570716714	Encapsulate field 'doctor'
+1570572259731	Encapsulate field 'admin'

@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +20,10 @@ public class PhoneNumber {
 	private String middleNums;
 	@Column(nullable=false)
 	private String lastFour;
+	@OneToOne
+	private Patient patient;
+	@OneToOne
+	private Doctor doctor;
 
 	public PhoneNumber() {
 		
@@ -74,5 +79,21 @@ public class PhoneNumber {
 		else {
 			// throw custom exception, about invalid input
 		}
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
 	}
 }

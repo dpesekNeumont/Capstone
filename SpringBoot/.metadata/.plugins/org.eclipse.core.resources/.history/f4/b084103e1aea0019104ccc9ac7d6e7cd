@@ -1,0 +1,13 @@
+package pesek.dean.capstoneapi.models;
+
+import java.sql.Date;
+import java.sql.Time;
+
+public class Appointment {
+	private int id;
+	private Date date;
+	private Patient patient;
+	private Doctor doctor;
+	private int roomNum;
+	private boolean needsWorkPriorToAppt;
+}

@@ -1,0 +1,7 @@
+package pesek.dean.capstoneapi.models;
+
+public class ClinicStaff {
+	private int id;
+	private String username;
+	private String password;
+}

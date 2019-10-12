@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +18,7 @@ public class Clinic {
 	private int id;
 	@Column(nullable=false)
 	private String name;
-	@Column(nullable=false)
+	@OneToMany
 	private List<Doctor> doctors;
 	@Column(nullable=false)
 	private int numOfRooms;

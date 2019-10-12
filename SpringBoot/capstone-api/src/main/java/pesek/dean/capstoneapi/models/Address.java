@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +24,10 @@ public class Address {
 	private int zipCode;
 	@Column(nullable=false)
 	private int zipCodeExtension;
+	@OneToOne
+	private Patient patient;
+	@OneToOne
+	private Doctor doctor;
 
 	public Address() {
 
@@ -111,5 +116,21 @@ public class Address {
 		else {
 			// throw input exception
 		}
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
 	}
 }

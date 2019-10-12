@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,9 +18,9 @@ public class Appointment {
 	private int id;
 	@Column(nullable=false)
 	private Date date;
-	@Column(nullable=false)
+	@ManyToOne
 	private Patient patient;
-	@Column(nullable=false)
+	@ManyToOne
 	private Doctor doctor;
 	@Column(nullable=true)
 	private int roomNum;

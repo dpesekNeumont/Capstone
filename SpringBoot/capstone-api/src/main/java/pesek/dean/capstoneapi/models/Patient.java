@@ -1,11 +1,15 @@
 package pesek.dean.capstoneapi.models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,21 +28,22 @@ public class Patient {
 	private String middlenitial;
 	@Column(nullable = false)
 	private String lastName;
-	@Column(nullable = false)
+	@OneToOne
 	private Email primaryEmail;
-	@Column(nullable = true)
+	@OneToOne
 	private Email secondaryEmail;
-	@Column(nullable = false)
+	@OneToOne
 	private Address privaryAddress;
-	@Column(nullable = true)
+	@OneToOne
 	private Address secondaryAddress;
-	@Column(nullable = false)
+	@OneToOne
 	private PhoneNumber primaryPhoneNumber;
-	@Column(nullable = true)
+	@OneToOne
 	private PhoneNumber secondaryPhoneNumber;
-	@Column(nullable = false)
 	@ManyToOne
 	private Doctor doctor;
+	@OneToMany
+	private List<Appointment> appointments;
 
 	public Patient() {
 

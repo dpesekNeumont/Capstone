@@ -1,0 +1,8 @@
+package pesek.dean.capstoneapi.models;
+
+public class Email {
+	private int id;
+	private String username;
+	private String domain;
+	
+}
