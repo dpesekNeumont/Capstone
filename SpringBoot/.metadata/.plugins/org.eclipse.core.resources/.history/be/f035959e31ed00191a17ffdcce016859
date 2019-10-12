@@ -1,0 +1,5 @@
+package pesek.dean.capstoneapi.repositories;
+
+public interface AppointmentJpaRepository {
+
+}
