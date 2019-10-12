@@ -11,6 +11,5 @@ public interface ClinicJpaRepository extends JpaRepository<Clinic, Integer>{
 	@Query("SELECT c FROM Clinic WHERE c.doctor = :dotcorId")
 	Clinic findByDoctor(@Param("dotcorId")int dotcorId);
 	
-	@Query("SELECT c.numOfRooms FROM Clinic WHERE c.id = :clinicId")
-	int getNumOfRooms(@Param("clinicId")int clinicId);
+	
 }
