@@ -1,0 +1,12 @@
+package pesek.dean.capstoneapi.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
+
+import pesek.dean.capstoneapi.models.Appointment;
+
+public interface AppointmentJpaRepository extends JpaRepository<Appointment, Integer>{
+
+	
+	Appointment findByPatient(@Param("patientId")int patientId);
+}
