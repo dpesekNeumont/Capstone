@@ -352,10 +352,6 @@ public class Patient {
 	}
 
 	public void setAppointments(List<Appointment> appointments) {
-		if (appointments != null && appointments.size() > 0)
-			this.appointments = appointments;
-		else {
-			// throw input exception
-		}
+		this.appointments = appointments;
 	}
 }

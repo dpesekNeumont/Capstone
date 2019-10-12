@@ -340,11 +340,7 @@ public class Patient {
 	}
 
 	public void setDob(Date dob) {
-		if (dob != null)
-			this.dob = dob;
-		else {
-			// throw input exception
-		}
+		this.dob = dob;
 	}
 
 	public List<Appointment> getAppointments() {
@@ -352,10 +348,6 @@ public class Patient {
 	}
 
 	public void setAppointments(List<Appointment> appointments) {
-		if (appointments != null && appointments.size() > 0)
-			this.appointments = appointments;
-		else {
-			// throw input exception
-		}
+		this.appointments = appointments;
 	}
 }
