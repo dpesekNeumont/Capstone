@@ -1,0 +1,14 @@
+package pesek.dean.capstoneapi.repositories;
+
+import java.sql.Date;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import pesek.dean.capstoneapi.models.Patient;
+
+public interface PatientJpaRepository extends JpaRepository<Patient, Integer>{
+	@Query("")
+	List<Patient> findByFirstNameAndLastNameAndDob(String firstName, String lastName, Date dob);
+}
