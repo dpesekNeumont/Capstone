@@ -8,6 +8,6 @@ import pesek.dean.capstoneapi.models.Address;
 
 public interface AddressJpaRepository extends JpaRepository<Address, Integer>{
 
-	@Query("SELECT a FROM Address WHERE a.patient = :patientId")
-	Address findByPatient(@Param("patientId")int patientId);
+//	@Query("SELECT a FROM Address WHERE a.patient = :patientId")
+//	Address findByPatient(@Param("patientId")int patientId);
 }

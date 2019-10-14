@@ -8,5 +8,4 @@ import pesek.dean.capstoneapi.models.Address;
 import pesek.dean.capstoneapi.models.PhoneNumber;
 
 public interface PhoneNumberJpaRepository extends JpaRepository<PhoneNumber, Integer>{
-	
 }
