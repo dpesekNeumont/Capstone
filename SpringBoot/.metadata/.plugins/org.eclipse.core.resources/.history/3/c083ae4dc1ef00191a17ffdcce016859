@@ -1,0 +1,30 @@
+package pesek.dean.capstoneapi.controllers;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import pesek.dean.capstoneapi.repositories.ClinicStaffJpaRepository;
+
+@RestController
+public class ClinicStaffRestController {
+
+	ClinicStaffJpaRepository clinicStaffRepo;
+	
+	@GetMapping(path="")
+	public boolean checkCridentials(HttpServletRequest request, HttpServletResponse response) {
+		
+		authenticate("","", response);
+		return false;
+	}
+	
+	private void authenticate(String username, String password, HttpServletResponse response) {
+		if (true) {
+			
+		} else {
+			response.setStatus(503);
+		}
+	}
+}

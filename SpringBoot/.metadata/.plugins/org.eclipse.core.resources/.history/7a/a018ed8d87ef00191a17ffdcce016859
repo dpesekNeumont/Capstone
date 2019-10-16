@@ -1,0 +1,7 @@
+spring.datasource.URL=jdbc:postgresql://ec2-54-243-49-82.compute-1.amazonaws.com:5432/d2o2rqq5vbvcuu?user=ghbkeibpajrqss&password=c1ae2274575c94f767bba5c83e61c5492fe8d042e105ae968ea8ac0b0dd6368c&sslmode=require
+spring.datasource.driverClassName=org.postgresql.Driver
+spring.datasource.maxActive=10
+spring.datasource.maxIdle=5
+spring.datasource.minIdle=2
+spring.datasource.initialSize=5
+spring.datasource.removeAbandoned=true
