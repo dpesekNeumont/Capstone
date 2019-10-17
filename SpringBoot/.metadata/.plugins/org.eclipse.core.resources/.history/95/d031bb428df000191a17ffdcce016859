@@ -17,19 +17,19 @@ public class AppointmentRestController {
 	
 	AppointmentJpaRepository appRepo;
 	
-	@PostMapping(path="/appointment")
+	@PostMapping(path="")
 	public void createAppointment(@RequestBody Appointment app) {
 		appRepo.saveAndFlush(app);
 	}
 	
-	@GetMapping(path="/appointment")
+	@GetMapping(path="")
 	public List<Appointment> getAllAppointments() {
 		return appRepo.findAll();		
 	}
 
 	//add a get for all appointments for that day
 	
-	@DeleteMapping(path="/appointment/{appointmentId}")
+	@DeleteMapping(path="/{appointmentId}")
 	public void deleteAppointmentById(@RequestParam("appointmentId")int appointmentId) {
 		appRepo.deleteById(appointmentId);
 	}

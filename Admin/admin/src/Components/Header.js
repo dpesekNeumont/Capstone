@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 
 import logo from '../logo.svg';
 
+import AuthHeader from './AuthHeader'
+
 export default class Header extends Component {
     constructor(props) {
         super(props)
@@ -18,7 +20,7 @@ export default class Header extends Component {
                 <div className="row">
                     <img src={logo} className="App-logo" alt="logo" />
                     <Link to='/' className="nav-link nav-item headLink" >Home</Link>
-                    <Link to='Login' className="nav-link nav-item headLink" >Login</Link>
+                    <AuthHeader  reRender={this.props.reRender}/>
                 </div>
             </div>
         )

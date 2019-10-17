@@ -11,20 +11,24 @@ import Login from './Components/Login'
 export default class App extends Component {
   constructor(props) {
     super(props)
-
+    this.reRender = this.reRender.bind(this)
     this.state = {
 
     }
+  }
+
+  reRender(){
+    this.setState({})
   }
 
   render() {
     return (
       <React.Fragment>
         <BrowserRouter>
-          <Header />
+          <Header  reRender={this.reRender}/>
           <Route path="/" component={App} >
             <Route exact path="/" component={Home} />
-            <Route path="/Login" component={Login} />
+            <Route path="/Login" render={() => <Login reRender={this.reRender}/>} />
 
           </Route>
         </BrowserRouter>

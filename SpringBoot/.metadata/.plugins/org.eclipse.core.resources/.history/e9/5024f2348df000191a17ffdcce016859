@@ -14,7 +14,7 @@ public class ClinicStaffRestController {
 
 	ClinicStaffJpaRepository clinicStaffRepo;
 	
-	@RequestMapping(path="/users", method = RequestMethod.GET)
+	@RequestMapping(path="", method = RequestMethod.GET)
 	public boolean checkCridentials(HttpServletRequest request, HttpServletResponse response) {
 		
 		return authenticate("","", response);
