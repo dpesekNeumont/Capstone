@@ -2,7 +2,6 @@ package pesek.dean.capstoneapi.controllers;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,13 +18,11 @@ public class AppointmentRestController {
 	AppointmentJpaRepository appRepo;
 	
 	@PostMapping(path="/appointment")
-	@CrossOrigin
 	public void createAppointment(@RequestBody Appointment app) {
 		appRepo.saveAndFlush(app);
 	}
 	
 	@GetMapping(path="/appointment")
-	@CrossOrigin
 	public List<Appointment> getAllAppointments() {
 		return appRepo.findAll();		
 	}
@@ -33,7 +30,6 @@ public class AppointmentRestController {
 	//add a get for all appointments for that day
 	
 	@DeleteMapping(path="/appointment/{appointmentId}")
-	@CrossOrigin
 	public void deleteAppointmentById(@RequestParam("appointmentId")int appointmentId) {
 		appRepo.deleteById(appointmentId);
 	}
