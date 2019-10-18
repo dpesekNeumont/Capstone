@@ -20,7 +20,7 @@ export default class AuthHeader extends Component {
         if (localStorage.getItem('loggedIn') === "true") {
             return (
             <React.Fragment>
-                <Link to="/Home" className="nav-link nav-item" onClick={this.killCookie}>Logout</Link>
+                <Link to="/" className="nav-link nav-item" onClick={this.killCookie}>Logout</Link>
             </React.Fragment>
             )
         } else {

@@ -42,7 +42,7 @@ public class ClinicStaffRestController {
 		catch (Exception e) {
 			response.setStatus(400);
 		}
-		return true;
+		return false;
 	}
 	
 	@RequestMapping(path="/users", method = RequestMethod.POST)

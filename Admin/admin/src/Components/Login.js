@@ -1,21 +1,27 @@
 import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
 
+import AuthenticateUser from './ApiControllers/AuthenticateLogin'
+
 export default class Login extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            authUrl: ''
         }
     }
 
     handleClick = () => {
-        if (this.state.username === 'test' && this.state.username === 'test') {
-            localStorage.setItem('loggedIn', 'true')
-            this.props.reRender()
-        }
+        AuthenticateUser(this.state.authUrl, this.state.username, this.state.password)
+        .then(response => {
+            if(response.status === 200){
+                localStorage.setItem('loggedIn', 'true')
+                this.props.reRender()
+            }
+        }).catch();
     }
 
     render() {
