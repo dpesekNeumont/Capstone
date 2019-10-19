@@ -18,7 +18,6 @@ export default class Login extends Component {
     handleClick = () => {
         AuthenticateUser(this.state.authUrl, this.state.username, this.state.password)
         .then(response => {
-            console.log(response.status)
             if(response.status === 200){
                 localStorage.setItem('loggedIn', 'true')
                 this.setState({loggedInMessage: ''})

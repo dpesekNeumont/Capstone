@@ -11,22 +11,25 @@ export default class ChooseAction extends Component {
     }
 
     createPatient = () => {
-        return <Redirect to='/CreatePatient' />
+        this.props.history.push('CreatePatient');
     }
 
     updatePatient = () => {
-        return <Redirect to='/UpdatePatient' />
+        this.props.history.push('UpdatePatient');
     }
 
     createAppointment = () => {
-        return <Redirect to='/CreateAppointment' />
+        this.props.history.push('CreateAppointment');
     }
 
     updateAppointment = () => {
-        return <Redirect to='/UpdateAppointment' />
+        this.props.history.push('UpdateAppointment');
     }
 
     render() {
+        if (localStorage.getItem('loggedIn') !== 'true') {
+            return <Redirect to='/Login' />
+        }
         return (
             <div className='container Align-Center'>
                 <h3>Choose:</h3>

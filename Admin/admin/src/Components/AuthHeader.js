@@ -21,6 +21,7 @@ export default class AuthHeader extends Component {
             return (
             <React.Fragment>
                 <Link to="/" className="nav-link nav-item" onClick={this.killCookie}>Logout</Link>
+                <Link to="/Action" className="nav-link nav-item" >Choose Action</Link>
             </React.Fragment>
             )
         } else {

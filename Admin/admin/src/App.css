@@ -42,3 +42,15 @@
   text-align: center;
   border-radius: 10%;
 }
+
+.create-person-buttons {
+  margin-right: 10px;
+}
+
+.input-text {
+  margin: 10px 0;
+}
+
+.input-fields {
+  margin: 5px 0;
+}

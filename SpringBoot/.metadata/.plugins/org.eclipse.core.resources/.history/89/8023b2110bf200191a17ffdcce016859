@@ -2,7 +2,6 @@ package pesek.dean.capstoneapi.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import pesek.dean.capstoneapi.models.Email;
@@ -15,7 +14,8 @@ public class EmailRestController {
 	private EmailJpaRepository emailRepo;
 	
 	@PostMapping(path="/emails")
-	public void CreateEmail(@RequestBody Email email) {
+	public void CreateEmail(Email email) {
 		emailRepo.saveAndFlush(email);
 	}
+
 }

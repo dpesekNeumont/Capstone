@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 
 export default class UpdatePatient extends Component {
     constructor(props) {
@@ -10,6 +11,9 @@ export default class UpdatePatient extends Component {
     }
     
     render() {
+        if (localStorage.getItem('loggedIn') !== 'true') {
+            return <Redirect to='/Login' />
+        }
         return (
             <div>
                 <p>UpdatePatient</p>
