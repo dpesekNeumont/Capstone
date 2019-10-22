@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -20,10 +19,8 @@ public class Appointment {
 	@Column(nullable=false)
 	private Date date;
 	@ManyToOne
-	@JoinColumn(name = "patient")
 	private Patient patient;
 	@ManyToOne
-	@JoinColumn(name = "doctor")
 	private Doctor doctor;
 	@Column(nullable=true)
 	private int roomNum;

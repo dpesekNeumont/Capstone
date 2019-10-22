@@ -54,3 +54,7 @@
 .input-fields {
   margin: 5px 0;
 }
+
+.error-message {
+  color: red
+}

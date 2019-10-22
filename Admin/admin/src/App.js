@@ -26,6 +26,10 @@ export default class App extends Component {
     this.setState({})
   }
 
+  componentDidMount = () => {
+    localStorage.removeItem('loggedIn')
+  }
+
   render() {
     return (
       <React.Fragment>

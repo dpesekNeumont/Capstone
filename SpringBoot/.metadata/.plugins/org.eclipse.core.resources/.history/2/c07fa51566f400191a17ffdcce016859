@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,10 +25,8 @@ public class Address {
 	@Column(nullable=false)
 	private int zipCodeExtension;
 	@OneToOne
-	@JoinColumn(name = "patient")
 	private Patient patient;
 	@OneToOne
-	@JoinColumn(name = "doctor")
 	private Doctor doctor;
 
 	public Address() {
