@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
-// import CreatePatientCall from './ApiControllers/CreatePatientCall'
+import CreatePatientCall from './ApiControllers/CreatePatientCall'
 
 export default class CreatePatient extends Component {
     constructor(props) {
@@ -65,6 +65,56 @@ export default class CreatePatient extends Component {
     }
 
     onCreateClicked = () => {
+        let apiURL = 'http://localhost:8080/'
+
+        //split up the email, phone number and address to make the objects.
+        //default the doc to be the only one in the database right now
+
+        let primaryEmail = {}
+        let secondaryEmail = {}
+        let primaryPhonenumber = {}
+        let secondaryPhonenumber = {}
+
+        if (this.state.primaryEmail.includes('@')) {
+            let emailParts = this.state.primaryEmail.split('@')
+            primaryEmail = {
+                username: emailParts[0],
+                domain: emailParts[1]
+            }
+        }
+
+        if (this.state.secondaryEmail.includes('@')) {
+            let emailParts = this.state.secondaryEmail.split('@')
+            secondaryEmail = {
+                username: emailParts[0],
+                domain: emailParts[1]
+            }
+        }
+
+        if (this.state.primaryPhonenumber.includes('-')) {
+            let phoneParts = this.state.primaryPhonenumber.split('-')
+            primaryPhonenumber = {
+                areaCode: phoneParts[0],
+                middleNums: [1],
+                lastFour: [2]
+            }
+        }
+
+        if (this.state.secondaryPhonenumber.includes('-')) {
+            let phoneParts = this.state.secondaryPhonenumber.split('-')
+            secondaryPhonenumber = {
+                areaCode: phoneParts[0],
+                middleNums: [1],
+                lastFour: [2]
+            }
+        }
+
+        CreatePatientCall(apiURL, 
+            { firstName: this.state.firstName, lastName: this.state.lastName, 
+                middleInitial: this.state.middleInitial, dob: this.state.dob, 
+                primaryEmail: primaryEmail, secondaryEmail: secondaryEmail, 
+                primaryPhoneNumber: primaryPhonenumber, secondaryPhoneNumber: secondaryPhonenumber, 
+                doctor: this.state.doctor })
         //calls api and creates paitnent
         //catch not 200 status codes and show a message that something went wrong
     }
@@ -106,7 +156,7 @@ export default class CreatePatient extends Component {
     }
 
     handleDocChange = (id) => {
-        this.setState({currentDoc: id})
+        this.setState({ currentDoc: id })
     }
 
     componentDidMount = () => {
@@ -203,7 +253,8 @@ export default class CreatePatient extends Component {
                     <h2>Create Patient</h2>
                     <div className='input-text'>
                         <h3>Choose Doctor:</h3>
-                        {
+                        <p>You get doctor John Doe while we work out bug</p>
+                        {/* {
                             this.state.doctors.map(function (d, index) {
                                 console.log(this)
                                 return (
@@ -211,7 +262,7 @@ export default class CreatePatient extends Component {
                                         <input type='radio' className="nav-link nav-item" value={d.firstName} onChange={() => this.handleDocChange(d.id)} />
                                     </label>
                                 )
-                            })}
+                            })} */}
                     </div>
                     <div className='create-person-buttons'>
                         <input type='submit' value='Cancel' onClick={this.onCancelClicked} className='create-person-buttons' />

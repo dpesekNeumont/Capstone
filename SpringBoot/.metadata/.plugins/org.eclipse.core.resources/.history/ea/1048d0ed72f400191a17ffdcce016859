@@ -16,7 +16,7 @@ public class PatientRestController {
 	
 	@PostMapping(path="/createPatient")
 	public void createPatient(@RequestBody Patient patient) {
-		patientRepo.saveAndFlush(patient);
+		
 	}
 	
 }
