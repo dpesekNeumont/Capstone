@@ -2,7 +2,6 @@ package pesek.dean.capstoneapi.models;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +18,7 @@ public class Clinic {
 	private int id;
 	@Column(nullable=false)
 	private String name;
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany
 	private List<Doctor> doctors;
 	@Column(nullable=false)
 	private int numOfRooms;

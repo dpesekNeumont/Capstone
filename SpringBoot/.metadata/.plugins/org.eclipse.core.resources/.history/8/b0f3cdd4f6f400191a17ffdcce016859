@@ -1,6 +1,5 @@
 package pesek.dean.capstoneapi.models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,10 +25,10 @@ public class Address {
 	private int zipCode;
 	@Column(nullable=false)
 	private int zipCodeExtension;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "patient")
 	private Patient patient;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "doctor")
 	private Doctor doctor;
 

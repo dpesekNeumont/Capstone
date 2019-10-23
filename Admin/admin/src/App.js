@@ -35,7 +35,7 @@ export default class App extends Component {
       <React.Fragment>
         <BrowserRouter>
           <Header  reRender={this.reRender}/>
-          <Route path="/" component={App} >
+          <Route path="/" >
             <Route exact path="/" component={Home} />
             <Route path="/Login" render={() => <Login reRender={this.reRender}/>} />
             <Route path="/Action" component={ChooseAction}/>

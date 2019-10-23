@@ -26,6 +26,12 @@ public class DoctorRestController {
 		return docRepo.findAll();
 	}
 	
+	@GetMapping(path="/doctors/{firstName}/{lastName}")
+	@CrossOrigin
+	public Doctor getDoctorByFirstAndLastName(@PathVariable String firstName, @PathVariable String lastName) {
+		return null;
+	}
+	
 	@GetMapping(path="/doctors/{doctorId}")
 	@CrossOrigin
 	public Doctor getDoctorById(@PathVariable int doctorId) {

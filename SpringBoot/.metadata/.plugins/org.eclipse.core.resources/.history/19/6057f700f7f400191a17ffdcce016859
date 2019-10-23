@@ -1,6 +1,5 @@
 package pesek.dean.capstoneapi.models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,10 +21,10 @@ public class PhoneNumber {
 	private String middleNums;
 	@Column(nullable=false)
 	private String lastFour;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "patient")
 	private Patient patient;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "doctor")
 	private Doctor doctor;
 

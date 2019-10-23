@@ -33,17 +33,17 @@ public class Patient {
 	private String lastName;
 	@Column(nullable = false)
 	private Date dob;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	private Email primaryEmail;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	private Email secondaryEmail;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	private Address privaryAddress;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	private Address secondaryAddress;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	private PhoneNumber primaryPhoneNumber;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	private PhoneNumber secondaryPhoneNumber;
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "doctor")

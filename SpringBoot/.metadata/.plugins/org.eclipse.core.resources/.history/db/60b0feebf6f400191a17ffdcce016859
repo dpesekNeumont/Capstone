@@ -1,6 +1,5 @@
 package pesek.dean.capstoneapi.models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,10 +19,10 @@ public class Email {
 	private String username;
 	@Column(nullable=false)
 	private String domain;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "patient")
 	private Patient patient;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "doctor")
 	private Doctor doctor;
 

@@ -24,20 +24,20 @@ public class Doctor {
 	private String firstName;
 	@Column(nullable = false)
 	private String lastName;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	private PhoneNumber primaryPhoneNumber;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	private PhoneNumber secondaryPhoneNumber;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	private Email primaryEmail;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	private Email secondaryEmail;
 	@Column(nullable = true)
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<Patient> patients;
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany
 	private List<Appointment> appointments;
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "clinic")
 	private Clinic clinic;
 
