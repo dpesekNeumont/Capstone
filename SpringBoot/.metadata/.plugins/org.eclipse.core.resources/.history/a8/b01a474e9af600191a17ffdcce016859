@@ -25,10 +25,10 @@ public class PatientRestController {
 //		return patientRepo.findByFirstNameAndLastName(firstName, lastName
 //	}
 	
-	@GetMapping(path="/getAllPatients")
+	@GetMapping(path="/getAll")
 	@CrossOrigin
 	public List<Patient> getAllPatients() { 
-		return patientRepo.findAll();
+		
 	}
 	
 	@PatchMapping(path="/updatePatient")

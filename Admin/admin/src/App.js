@@ -10,6 +10,7 @@ import Login from './Components/Login'
 import ChooseAction from './Components/ChooseAction'
 import CreatePatient from './Components/CreatePatient'
 import UpdatePatient from './Components/UpdatePatient'
+import UpdatePatientInformation from './Components/UpdatePatientInformation'
 import CreateAppointment from './Components/CreateAppointment'
 import UpdateAppointment from './Components/UpdateAppointment'
 
@@ -40,13 +41,13 @@ export default class App extends Component {
             <Route path="/Login" render={() => <Login reRender={this.reRender}/>} />
             <Route path="/Action" component={ChooseAction}/>
             <Route path="/CreatePatient" component={CreatePatient} />
-            <Route path="/UpdatePatient" component={UpdatePatient} />
-            <Route path="/CreateAppointment" component={CreateAppointment} />
-            <Route path="/UpdateAppointment" component={UpdateAppointment} />
+            <Route exact path="/UpdatePatient" component={UpdatePatient} />
+            <Route exact path="/UpdatePatient/:patientId" component={UpdatePatientInformation} />
+            <Route exact path="/CreateAppointment" component={CreateAppointment} />
+            <Route exact path="/UpdateAppointment" component={UpdateAppointment} />
           </Route>
         </BrowserRouter>
       </React.Fragment>
     )
   }
 }
-
