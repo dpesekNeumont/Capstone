@@ -26,12 +26,12 @@ public class Doctor {
 	private String lastName;
 	@OneToOne(cascade=CascadeType.ALL)
 	private PhoneNumber primaryPhoneNumber;
-	@OneToOne(cascade=CascadeType.ALL)
-	private PhoneNumber secondaryPhoneNumber;
+//	@OneToOne(cascade=CascadeType.ALL)
+//	private PhoneNumber secondaryPhoneNumber;
 	@OneToOne(cascade=CascadeType.ALL)
 	private Email primaryEmail;
-	@OneToOne(cascade=CascadeType.ALL)
-	private Email secondaryEmail;
+//	@OneToOne(cascade=CascadeType.ALL)
+//	private Email secondaryEmail;
 	@Column(nullable = true)
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<Patient> patients;
@@ -53,24 +53,24 @@ public class Doctor {
 		setClinic(clinic);
 	}
 
-	public Doctor(String firstName, String lastName, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber,
-			Email primaryEmail, Clinic clinic) {
-		this(firstName, lastName, primaryPhoneNumber, primaryEmail, clinic);
-		setSecondaryPhoneNumber(secondaryPhoneNumber);
-	}
-
-	public Doctor(String firstName, String lastName, PhoneNumber primaryPhoneNumber, Email primaryEmail,
-			Email secondaryEmail, Clinic clinic) {
-		this(firstName, lastName, primaryPhoneNumber, primaryEmail, clinic);
-		setSecondaryEmail(secondaryEmail);
-	}
-
-	public Doctor(String firstName, String lastName, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber,
-			Email primaryEmail, Email secondaryEmail, Clinic clinic) {
-		this(firstName, lastName, primaryPhoneNumber, primaryEmail, clinic);
-		setSecondaryEmail(secondaryEmail);
-		setSecondaryPhoneNumber(secondaryPhoneNumber);
-	}
+//	public Doctor(String firstName, String lastName, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber,
+//			Email primaryEmail, Clinic clinic) {
+//		this(firstName, lastName, primaryPhoneNumber, primaryEmail, clinic);
+//		setSecondaryPhoneNumber(secondaryPhoneNumber);
+//	}
+//
+//	public Doctor(String firstName, String lastName, PhoneNumber primaryPhoneNumber, Email primaryEmail,
+//			Email secondaryEmail, Clinic clinic) {
+//		this(firstName, lastName, primaryPhoneNumber, primaryEmail, clinic);
+//		setSecondaryEmail(secondaryEmail);
+//	}
+//
+//	public Doctor(String firstName, String lastName, PhoneNumber primaryPhoneNumber, PhoneNumber secondaryPhoneNumber,
+//			Email primaryEmail, Email secondaryEmail, Clinic clinic) {
+//		this(firstName, lastName, primaryPhoneNumber, primaryEmail, clinic);
+//		setSecondaryEmail(secondaryEmail);
+//		setSecondaryPhoneNumber(secondaryPhoneNumber);
+//	}
 
 	public int getId() {
 		return id;
@@ -116,17 +116,17 @@ public class Doctor {
 		}
 	}
 
-	public PhoneNumber getSecondaryPhoneNumber() {
-		return secondaryPhoneNumber;
-	}
-
-	public void setSecondaryPhoneNumber(PhoneNumber secondaryPhoneNumber) {
-		if (secondaryPhoneNumber != null)
-			this.secondaryPhoneNumber = secondaryPhoneNumber;
-		else {
-			// throw input exception
-		}
-	}
+//	public PhoneNumber getSecondaryPhoneNumber() {
+//		return secondaryPhoneNumber;
+//	}
+//
+//	public void setSecondaryPhoneNumber(PhoneNumber secondaryPhoneNumber) {
+//		if (secondaryPhoneNumber != null)
+//			this.secondaryPhoneNumber = secondaryPhoneNumber;
+//		else {
+//			// throw input exception
+//		}
+//	}
 
 	public Email getPrimaryEmail() {
 		return primaryEmail;
@@ -140,17 +140,17 @@ public class Doctor {
 		}
 	}
 
-	public Email getSecondaryEmail() {
-		return secondaryEmail;
-	}
-
-	public void setSecondaryEmail(Email secondaryEmail) {
-		if (secondaryEmail != null)
-			this.secondaryEmail = secondaryEmail;
-		else {
-			// throw input exception
-		}
-	}
+//	public Email getSecondaryEmail() {
+//		return secondaryEmail;
+//	}
+//
+//	public void setSecondaryEmail(Email secondaryEmail) {
+//		if (secondaryEmail != null)
+//			this.secondaryEmail = secondaryEmail;
+//		else {
+//			// throw input exception
+//		}
+//	}
 
 	public Clinic getClinic() {
 		return clinic;

@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="appointment")
 public class Appointment {
@@ -22,9 +24,11 @@ public class Appointment {
 	private Date date;
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "patient")
+	@JsonIgnore
 	private Patient patient;
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "doctor")
+	@JsonIgnore
 	private Doctor doctor;
 	@Column(nullable=true)
 	private int roomNum;

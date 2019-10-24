@@ -11,16 +11,11 @@ export default class CreatePatient extends Component {
         this.state = {
             messages: {
                 primaryEmail: '',
-                secondaryEmail: '',
                 primaryPhoneNumber: '',
-                secondaryPhoneNumber: '',
                 datOfBirth: '',
                 primaryState: '',
-                secondaryState: '',
                 primaryZipCode: '',
-                secondaryZipCode: '',
                 primaryZipExtension: '',
-                secondaryZipExtension: ''
             },
             regexes: {
                 emailRegex: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
@@ -40,19 +35,12 @@ export default class CreatePatient extends Component {
             password: '',
             confirmedPassword: '',
             primaryEmail: '',
-            secondaryEmail: '',
             primaryPhonenumber: '',
-            secondaryPhonenumber: '',
             primaryStreetAddress: '',
             primaryCity: '',
-            primaryState: '',
+            primaryState: 'AZ',
             primaryZipCode: '',
             primaryZipCodeExtension: '',
-            secondaryStreetAddress: '',
-            secondaryCity: '',
-            secondaryState: '',
-            secondaryZipCode: '',
-            secondaryZipCodeExtension: '',
             doctor: {
             }
         }
@@ -81,30 +69,22 @@ export default class CreatePatient extends Component {
             this.setState({ currentPage: 'cridentials' })
         }
     }
-
+    
     onCreateClicked = () => {
         let apiURL = 'http://localhost:8080/createPatient'
+        console.log(this.state.doctor)
 
         //split up the email, phone number and address to make the objects.
         //default the doc to be the only one in the database right now
 
         let primaryEmail = {}
-        let secondaryEmail = {}
         let primaryPhonenumber = {}
-        let secondaryPhonenumber = {}
         let primaryAddress = {
             streetAddress: this.state.primaryStreetAddress,
             city: this.state.primaryCity,
             stateAbrev: this.state.primaryState,
             zipCode: this.state.primaryZipCode,
             zipCodeExtension: this.state.primaryZipCodeExtension
-        }
-        let secondaryAddress = {
-            streetAddress: this.state.secondaryStreetAddress,
-            city: this.state.secondaryCity,
-            stateAbrev: this.state.secondaryState,
-            zipCode: this.state.secondaryZipCode,
-            zipCodeExtension: this.state.secondaryZipCodeExtension
         }
 
         if (this.state.primaryEmail.includes('@')) {
@@ -115,26 +95,9 @@ export default class CreatePatient extends Component {
             }
         }
 
-        if (this.state.secondaryEmail.includes('@')) {
-            let emailParts = this.state.secondaryEmail.split('@')
-            secondaryEmail = {
-                username: emailParts[0],
-                domain: emailParts[1]
-            }
-        }
-
         if (this.state.primaryPhonenumber.includes('-')) {
             let phoneParts = this.state.primaryPhonenumber.split('-')
             primaryPhonenumber = {
-                areaCode: `${phoneParts[0]}`,
-                middleNums: `${phoneParts[1]}`,
-                lastFour: `${phoneParts[2]}`
-            }
-        }
-
-        if (this.state.secondaryPhonenumber.includes('-')) {
-            let phoneParts = this.state.secondaryPhonenumber.split('-')
-            secondaryPhonenumber = {
                 areaCode: `${phoneParts[0]}`,
                 middleNums: `${phoneParts[1]}`,
                 lastFour: `${phoneParts[2]}`
@@ -150,14 +113,10 @@ export default class CreatePatient extends Component {
                 middleInitial: this.state.middleInitial,
                 dob: this.state.dob,
                 primaryEmail: primaryEmail,
-                secondaryEmail: secondaryEmail,
                 primaryPhoneNumber: primaryPhonenumber,
-                secondaryPhoneNumber: secondaryPhonenumber,
                 primaryAddress: primaryAddress,
-                secondaryAddress: secondaryAddress,
                 doctor: this.state.doctor
             })
-            .then()
         //calls api and creates paitnent
         //catch not 200 status codes and show a message that something went wrong
     }
@@ -167,20 +126,11 @@ export default class CreatePatient extends Component {
             case 'primaryState':
                 this.validatePrimaryState(event.target.value)
                 break;
-            case 'secondaryState':
-                this.validateSecondaryState(event.target.value)
-                break;
             case 'primaryZip':
                 this.validatePrimaryZipCode(event.target.value)
                 break;
-            case 'secondaryZip':
-                this.validateSecondaryZipCode(event.target.value)
-                break;
             case 'primaryZipCodeExtension':
                 this.validatePrimaryZipCodeExtension(event.target.value)
-                break;
-            case 'secondaryZipCodeExtension':
-                this.validateSecondaryZipCodeExtension(event.target.value)
                 break;
             case 'dob':
                 this.validateDateOfBirth(event.target.value)
@@ -188,14 +138,8 @@ export default class CreatePatient extends Component {
             case 'primaryEmail':
                 this.validatePrimaryEmail(event.target.value)
                 break;
-            case 'secondaryEmail':
-                this.validateSecondaryEmail(event.target.value)
-                break;
             case 'primaryPhoneNumber':
                 this.validatePrimaryPhone(event.target.value)
-                break;
-            case 'secondaryPhoneNumber':
-                this.validateSecondaryPhone(event.target.value)
                 break;
             default: this.setState({ [event.target.name]: event.target.value });
         }
@@ -215,15 +159,6 @@ export default class CreatePatient extends Component {
         this.setState({ primaryEmail: value })
     }
 
-    validateSecondaryEmail = (value) => {
-        if (!this.state.regexes.emailRegex.test(value)) {
-            this.setState({ messages: { secondaryEmail: 'This Field Is Invalid' } })
-        } else {
-            this.setState({ messages: { secondaryEmail: '' } })
-        }
-        this.setState({ secondaryEmail: value })
-    }
-
     validatePrimaryPhone = (value) => {
         if (!this.state.regexes.phoneRegex.test(value)) {
             this.setState({ messages: { primaryPhoneNumber: 'This Field Is Invalid' } })
@@ -231,15 +166,6 @@ export default class CreatePatient extends Component {
             this.setState({ messages: { primaryPhoneNumber: '' } })
         }
         this.setState({ primaryPhonenumber: value })
-    }
-
-    validateSecondaryPhone = (value) => {
-        if (!this.state.regexes.phoneRegex.test(value)) {
-            this.setState({ messages: { secondaryPhoneNumber: 'This Field Is Invalid' } })
-        } else {
-            this.setState({ messages: { secondaryPhoneNumber: '' } })
-        }
-        this.setState({ secondaryPhonenumber: value })
     }
 
     validateDateOfBirth = (value) => {
@@ -253,20 +179,11 @@ export default class CreatePatient extends Component {
 
     validatePrimaryState = (value) => {
         if (!this.state.regexes.stateRegex.test(value)) {
-            this.setState({ messages: { state: 'This Field Is Invalid' } })
+            this.setState({ messages: { primaryState: 'This Field Is Invalid' } })
         } else {
-            this.setState({ messages: { state: '' } })
+            this.setState({ messages: { primaryState: '' } })
         }
         this.setState({ primaryState: value })
-    }
-
-    validateSecondaryState = (value) => {
-        if (!this.state.regexes.stateRegex.test(value)) {
-            this.setState({ messages: { secondaryState: 'This Field Is Invalid' } })
-        } else {
-            this.setState({ messages: { secondaryState: '' } })
-        }
-        this.setState({ secondaryState: value })
     }
 
     validatePrimaryZipCode = (value) => {
@@ -278,15 +195,6 @@ export default class CreatePatient extends Component {
         this.setState({ primaryZipCode: value })
     }
 
-    validateSecondaryZipCode = (value) => {
-        if (!this.state.regexes.zipRegex.test(value)) {
-            this.setState({ messages: { secondaryZipCode: 'This Field Is Invalid' } })
-        } else {
-            this.setState({ messages: { secondaryZipCode: '' } })
-        }
-        this.setState({ secondaryZipCode: value })
-    }
-
     validatePrimaryZipCodeExtension = (value) => {
         if (!this.state.regexes.zipRegex.test(value)) {
             this.setState({ messages: { primaryZipExtension: 'This Field Is Invalid' } })
@@ -296,23 +204,17 @@ export default class CreatePatient extends Component {
         this.setState({ primaryZipCodeExtension: value })
     }
 
-    validateSecondaryZipCodeExtension = (value) => {
-        if (!this.state.regexes.zipRegex.test(value)) {
-            this.setState({ messages: { secondaryZipExtension: 'This Field Is Invalid' } })
-        } else {
-            this.setState({ messages: { secondaryZipExtension: '' } })
-        }
-        this.setState({ secondaryZipCodeExtension: value })
-    }
-
     handleDocChange = (event) => {
+        // console.log(event.target.value)
         this.setState({ doctor: GetDoc('http://localhost:8080/doctors', event.target.value) })
     }
 
     componentDidMount = () => {
         fetch('http://localhost:8080/doctors')
             .then(response => response.json())
-            .then(data => this.setState({ doctors: data, doctor: this.state.doctors[0] }))
+            .then(data => {
+                this.setState({ doctors: data, doctor: this.state.doctors[0] });
+        })
     }
 
     render() {
@@ -362,19 +264,9 @@ export default class CreatePatient extends Component {
                             <input type='email' name='primaryEmail' className='input-fields' onChange={this.validateInput} />
                         </p>
 
-                        <p className='error-message'>{this.state.messages.secondaryEmail}</p>
-                        <p>Secondary Email:
-                            <input type='email' name='secondaryEmail' className='input-fields' onChange={this.validateInput} />
-                        </p>
-
                         <p className='error-message'>{this.state.messages.primaryPhoneNumber}</p>
                         <p>Primary Phone Number:
                             <input type='text' name='primaryPhoneNumber' className='input-fields' onChange={this.validateInput} />
-                        </p>
-
-                        <p className='error-message'>{this.state.messages.secondaryPhoneNumber}</p>
-                        <p>Secondary Phone Number:
-                            <input type='text' name='secondaryPhoneNumber' className='input-fields' onChange={this.validateInput} />
                         </p>
 
                         <h4>Primary Address:</h4>
@@ -385,7 +277,7 @@ export default class CreatePatient extends Component {
                         <p>City:
                             <input type='text' className='input-fields' onChange={({ target: { value: primaryCity } }) => this.setState({ primaryCity })} value={this.state.primaryCity} />
                         </p>
-                        <p className='error-message'>{this.state.messages.state}</p>
+                        <p className='error-message'>{this.state.messages.primaryState}</p>
                         <p>State:
                             <input type='text' name='primaryState' className='input-fields' onChange={this.validateInput} />
                         </p>
@@ -396,26 +288,6 @@ export default class CreatePatient extends Component {
                         <p className='error-message'>{this.state.messages.primaryZipExtension}</p>
                         <p>Zip Code Extension:
                             <input type='text' name='primaryZipCodeExtension' className='input-fields' onChange={this.validateInput} />
-                        </p>
-
-                        <h4>Secondary Address:</h4>
-                        <p>Address:
-                            <input type='text' className='input-fields' onChange={({ target: { value: secondaryStreetAddress } }) => this.setState({ secondaryStreetAddress })} value={this.state.secondaryStreetAddress} />
-                        </p>
-                        <p>City:
-                            <input type='text' className='input-fields' onChange={({ target: { value: secondaryCity } }) => this.setState({ secondaryCity })} value={this.state.secondaryCity} />
-                        </p>
-                        <p className='error-message'>{this.state.messages.state}</p>
-                        <p>State:
-                            <input type='text' name='secondaryState' className='input-fields' onChange={this.validateInput} />
-                        </p>
-                        <p className='error-message'>{this.state.messages.secondaryZipCode}</p>
-                        <p>Zip Code:
-                            <input type='text' name='secondaryZip' className='input-fields' onChange={this.validateInput} />
-                        </p>
-                        <p className='error-message'>{this.state.messages.secondaryZipExtension}</p>
-                        <p>Zip Code Extension:
-                            <input type='text' name='secondaryZipCodeExtension' className='input-fields' onChange={this.validateInput} />
                         </p>
                     </div>
                     <div className='create-person-buttons'>
@@ -433,11 +305,17 @@ export default class CreatePatient extends Component {
                     <div className='input-text'>
                         <h3>Login Information:</h3>
 
-                        <p>Username:  <input type='text' className='input-fields' onChange={({ target: { value: username } }) => this.setState({ username })} value={this.state.username.value} /></p>
+                        <p>Username: 
+                             <input type='text' className='input-fields' onChange={({ target: { value: username } }) => this.setState({ username })} value={this.state.username.value} />
+                             </p>
 
-                        <p>Password:  <input type='password' className='input-fields' onChange={({ target: { value: password } }) => this.setState({ password })} value={this.state.password.value} /></p>
+                        <p>Password: 
+                             <input type='password' className='input-fields' onChange={({ target: { value: password } }) => this.setState({ password })} value={this.state.password.value} />
+                             </p>
 
-                        <p>Confirm Password:  <input type='password' className='input-fields' onChange={({ target: { value: confirmedPassword } }) => this.setState({ confirmedPassword })} value={this.state.confirmedPassword.value} /></p>
+                        <p>Confirm Password: 
+                             <input type='password' className='input-fields' onChange={({ target: { value: confirmedPassword } }) => this.setState({ confirmedPassword })} value={this.state.confirmedPassword.value} />
+                             </p>
                     </div>
                     <div className='create-person-buttons'>
                         <input type='submit' value='Cancel' onClick={this.onCancelClicked} className='create-person-buttons' />
@@ -453,12 +331,11 @@ export default class CreatePatient extends Component {
                     <h2>Create Patient</h2>
                     <div className='input-text'>
                         <h3>Choose Doctor:</h3>
-                        <p>You get doctor John Doe while we work out bug</p>
                         <select onChange={this.handleDocChange} value={this.state.currentDoc}>
                             {
-                                this.state.doctors.map(function (d) {
+                                this.state.doctors.map(function (d, index) {
                                     return (
-                                        <option key={d.id} value={d.id}>{d.firstName} {d.lastName}</option>
+                                        <option key={index} value={d.id}>{d.firstName} {d.lastName}</option>
                                     )
                                 })
                             }

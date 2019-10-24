@@ -23,7 +23,9 @@ public class DoctorRestController {
 	@GetMapping(path="/doctors")
 	@CrossOrigin
 	public List<Doctor> getAllDoctors() {
-		return docRepo.findAll();
+		
+		var thing = docRepo.findAll();
+		return thing;
 	}
 	
 	@GetMapping(path="/doctors/{doctorId}")

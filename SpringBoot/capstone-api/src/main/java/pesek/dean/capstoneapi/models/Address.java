@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="address")
 public class Address {
@@ -28,9 +30,11 @@ public class Address {
 	private int zipCodeExtension;
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "patient")
+	@JsonIgnore
 	private Patient patient;
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "doctor")
+	@JsonIgnore
 	private Doctor doctor;
 
 	public Address() {

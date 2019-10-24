@@ -7,7 +7,7 @@ spring.datasource.minIdle=2
 spring.datasource.initialSize=5
 spring.datasource.removeAbandoned=true
 spring.jpa.hibernate.ddl-auto = update
-
+spring.jackson.date-format=(yyyy-MM-dd HH:mm:ss)
 <dependency>
 	<groupId>org.postgresql</groupId>
 	<artifactId>postgresql</artifactId>
@@ -23,6 +23,7 @@ spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MariaDBDialect
 spring.datasource.driver-class-name = org.mariadb.jdbc.Driver
 spring.jackson.serialization.fail-on-empty-beans = false
 spring.jackson.default-property-inclusion = non_empty
+spring.jackson.date-format=(yyyy-MM-dd HH:mm:ss)
 
 <dependency>
     <groupId>org.mariadb.jdbc</groupId>
