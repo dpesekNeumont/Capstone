@@ -11,6 +11,8 @@ import ChooseAction from './Components/ChooseAction'
 import CreatePatient from './Components/CreatePatient'
 import UpdatePatient from './Components/UpdatePatient'
 import UpdatePatientInformation from './Components/UpdatePatientInformation'
+import DeleteSuccessful from './Components/DeleteSuccessful'
+import UpdateSuccessful from './Components/UpdateSuccessful'
 import CreateAppointment from './Components/CreateAppointment'
 import UpdateAppointment from './Components/UpdateAppointment'
 
@@ -43,6 +45,8 @@ export default class App extends Component {
             <Route path="/CreatePatient" component={CreatePatient} />
             <Route exact path="/UpdatePatient" component={UpdatePatient} />
             <Route exact path="/UpdatePatient/:patientId" component={UpdatePatientInformation} />
+            <Route path="/DeleteSuccessful" component={DeleteSuccessful} />
+            <Route path="/UpdateSuccessful" component={UpdateSuccessful} />
             <Route exact path="/CreateAppointment" component={CreateAppointment} />
             <Route exact path="/UpdateAppointment" component={UpdateAppointment} />
           </Route>

@@ -13,14 +13,13 @@ export default class UpdatePatient extends Component {
         }
     }
 
-    onSearchClicked() {
+    onSearchClicked() { 
         let firstName = this.state.firstName
         let lastName = this.state.lastName
-        let matchedPatients = this.state.patients.filter(function(patient) {
+        let matchedPatients = this.state.patients.filter(function (patient) {
             return (patient.firstName === firstName && patient.lastName === lastName)
         })
-        console.log(matchedPatients)
-        this.setState({filteredPatients: matchedPatients})
+        this.setState({ filteredPatients: matchedPatients })
     }
 
     componentDidMount = () => {
@@ -46,7 +45,8 @@ export default class UpdatePatient extends Component {
                             <input type='text' onChange={({ target: { value: lastName } }) => this.setState({ lastName })} value={this.state.lastName} />
                         </p>
                     </div>
-                    <div >
+                    <div className='create-person-buttons'>
+                        <input type='submit' value='Cancel' onClick={this.onCancelClicked} className='create-person-buttons' />
                         <input type='submit' value='Search' onClick={this.onSearchClicked} className='create-person-buttons' />
                     </div>
                     <div className='search-results'>
@@ -60,6 +60,7 @@ export default class UpdatePatient extends Component {
                                                 <p>First Name: {p.firstName}</p>
                                                 <p>Last Name: {p.lastName}</p>
                                                 <p>Phone Number: {p.primaryPhoneNumber.areaCode}-{p.primaryPhoneNumber.middleNums}-{p.primaryPhoneNumber.lastFour}</p>
+                                                <p>Email: {p.primaryEmail.username}@{p.primaryEmail.domain}</p>
                                                 {/* 
                                         Date of birth not correctly saving to database, uncomment when that is fixed
                                         <p>Date Of Birth: {new Date(p.dob).toUTCString()}</p> 

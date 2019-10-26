@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import pesek.dean.capstoneapi.models.Doctor;
 import pesek.dean.capstoneapi.models.Patient;
 import pesek.dean.capstoneapi.repositories.PatientJpaRepository;
 
@@ -43,7 +44,7 @@ public class PatientRestController {
 	@GetMapping(path="/getPatient/{value}")
 	@CrossOrigin
 	public Patient getPatiendById(@PathVariable int value) {
-		Optional<Patient> result = patientRepo.findById(value);
+		Optional<Doctor> result = docRepo.findById(doctorId);
 		return result.orElseThrow(() -> new RuntimeException());
 	}
 	

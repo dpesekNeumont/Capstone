@@ -1,7 +1,6 @@
 package pesek.dean.capstoneapi.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,20 +30,13 @@ public class PatientRestController {
 	@DeleteMapping(path="/deletePatient/{patientId}")
 	@CrossOrigin
 	public void deletePatient(@PathVariable int patientId) {
-		patientRepo.deleteById(patientId);
+		
 	}
 	
 	@GetMapping(path="/getAllPatients")
 	@CrossOrigin
 	public List<Patient> getAllPatients() { 
 		return patientRepo.findAll();
-	}
-	
-	@GetMapping(path="/getPatient/{value}")
-	@CrossOrigin
-	public Patient getPatiendById(@PathVariable int value) {
-		Optional<Patient> result = patientRepo.findById(value);
-		return result.orElseThrow(() -> new RuntimeException());
 	}
 	
 	@PatchMapping(path="/updatePatient")
