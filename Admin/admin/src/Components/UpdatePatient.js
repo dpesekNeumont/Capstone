@@ -13,6 +13,10 @@ export default class UpdatePatient extends Component {
         }
     }
 
+    onCancelClicked = () => {
+        this.props.history.push('Action');
+    }
+
     onSearchClicked() { 
         let firstName = this.state.firstName
         let lastName = this.state.lastName
