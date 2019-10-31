@@ -1,4 +1,5 @@
 This project will be a combination of three applications to create a whole clinic experience. 
+
 Admin Page: 
   Where you will create and update patients data, doctor data, and appointment data.
 
