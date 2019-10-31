@@ -29,6 +29,7 @@ public class AppointmentRestController {
 	@PostMapping(path="/appointment")
 	@CrossOrigin
 	public void createAppointment(@RequestBody Appointment app, HttpServletRequest req) throws IOException {
+		IOUtils.toString(req.getReader());
 		appRepo.saveAndFlush(app);
 	}
 	

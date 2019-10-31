@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,6 +28,7 @@ public class AppointmentRestController {
 	@PostMapping(path="/appointment")
 	@CrossOrigin
 	public void createAppointment(@RequestBody Appointment app, HttpServletRequest req) throws IOException {
+		req = new HttpServletRequestWrapper((HttpServletRequest) req);
 		appRepo.saveAndFlush(app);
 	}
 	

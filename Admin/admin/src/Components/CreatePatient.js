@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
-import CreatePatientCall from './ApiControllers/CreatePatientCall'
+import CreatePatientCall from './ApiControllers/CreateData'
 import GetDoc from './ApiControllers/GetDoctorById'
 
 export default class CreatePatient extends Component {
@@ -69,7 +69,7 @@ export default class CreatePatient extends Component {
             this.setState({ currentPage: 'cridentials' })
         }
     }
-    
+
     onCreateClicked = () => {
         let apiURL = 'http://localhost:8080/createPatient'
         console.log(this.state.doctor)
