@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
 
-import deletePatient from './ApiControllers/deletePatient'
-import getPatient from './ApiControllers/getPatientById'
-import UpdatePatient from './ApiControllers/UpdatePatientCall'
+import deletePatient from './ApiControllers/deleteData'
+import getPatient from './ApiControllers/GetData'
+import UpdatePatient from './ApiControllers/UpdateData'
 
 export default class UpdatePatientInformation extends Component {
     constructor(props) {

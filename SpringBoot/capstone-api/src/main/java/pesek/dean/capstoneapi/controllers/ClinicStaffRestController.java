@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,6 +46,12 @@ public class ClinicStaffRestController {
 			response.setStatus(400);
 		}
 		return true;
+	}
+	
+	@GetMapping(path="/staff")
+	@CrossOrigin
+	public List<ClinicStaff> getAllStaff() {
+		return clinicStaffRepo.findAll();
 	}
 	
 	@RequestMapping(path="/users", method = RequestMethod.POST)

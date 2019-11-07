@@ -24,7 +24,6 @@ export default class Login extends Component {
                 this.props.reRender()
             }
             else {
-                
                 localStorage.removeItem('loggedIn')
                 this.setState({loggedInMessage: 'Invalid cridentials, please try again'})
             }

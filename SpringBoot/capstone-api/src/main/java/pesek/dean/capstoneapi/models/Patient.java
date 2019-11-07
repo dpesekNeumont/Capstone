@@ -14,8 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "patient")
 public class Patient {
@@ -48,7 +46,6 @@ public class Patient {
 //	private PhoneNumber secondaryPhoneNumber;
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "doctor")
-	@JsonIgnore
 	private Doctor doctor;
 	@OneToMany
 	private List<Appointment> appointments;

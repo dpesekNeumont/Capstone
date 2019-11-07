@@ -1,7 +1,12 @@
 package pesek.dean.capstoneapi.controllers;
 
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,10 +33,36 @@ public class PatientRestController {
 //		return patientRepo.findByFirstNameAndLastName(firstName, lastName
 //	}
 	
+	@GetMapping(path="/auth")
+	@CrossOrigin
+	public boolean checkCridentials(HttpServletRequest req, HttpServletResponse res) {
+		String header = req.getHeader("Authorization");
+		return authenticate(header, res);
+	}
+	
 	@DeleteMapping(path="/deletePatient/{patientId}")
 	@CrossOrigin
 	public void deletePatient(@PathVariable int patientId) {
 		patientRepo.deleteById(patientId);
+	}
+	
+	private boolean authenticate(String header, HttpServletResponse response) {
+		try {
+			String rawCridentials = new String(Base64.getDecoder().decode(header.split(" ")[1]));
+			String[] parts = rawCridentials.split(":");
+			String username = parts[0];
+			String password = parts[1];
+			List<Patient> staff = patientRepo.findAll();
+			List<Patient> staffStream = staff.stream().filter(s -> s.getUsername().equals(username)
+					&& s.getPassword().equals(password)).collect(Collectors.toList());
+			if (staffStream == null || staffStream.isEmpty()) {
+				throw new RuntimeException();
+			}
+		}
+		catch (Exception e) {
+			response.setStatus(400);
+		}
+		return true;
 	}
 	
 	@GetMapping(path="/getAllPatients")

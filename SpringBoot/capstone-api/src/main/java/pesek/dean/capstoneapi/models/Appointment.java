@@ -10,8 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name="appointment")
 public class Appointment {
@@ -22,16 +20,16 @@ public class Appointment {
 	private long date;
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "patient")
-	@JsonIgnore
 	private Patient patient;
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "doctor")
-	@JsonIgnore
 	private Doctor doctor;
 	@Column(nullable=true)
 	private int roomNum;
 	@Column(nullable=false)
 	private boolean needsWorkPriorToAppt;
+	@Column(nullable=false)
+	private boolean checkedIn;
 
 	public Appointment() {
 
@@ -106,5 +104,13 @@ public class Appointment {
 
 	public void setDate(long date) {
 		this.date = date;
+	}
+
+	public boolean isCheckedIn() {
+		return checkedIn;
+	}
+
+	public void setCheckedIn(boolean checkedIn) {
+		this.checkedIn = checkedIn;
 	}
 }

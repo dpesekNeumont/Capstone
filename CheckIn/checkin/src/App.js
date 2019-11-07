@@ -8,6 +8,8 @@ import Home from './components/home'
 import Login from './components/login'
 import PatientSearch from './components/patientSearch'
 import CheckInConfirmation from './components/CheckInConfirmation'
+import FinalConfirmation from './components/FinalConfirmation'
+import ErrorPage from './components/ErrorPage'
 
 export default class App extends Component {
   constructor(props) {
@@ -31,7 +33,9 @@ export default class App extends Component {
               <Route exact path="/CheckIn" component={Home} />
               <Route exact path="/CheckIn/Login/:option" component={Login}/>
               <Route path="/CheckIn/Staff" component={PatientSearch} />
-              <Route path="/CheckIn/Confirmation" component={CheckInConfirmation} />
+              <Route path="/CheckIn/Confirmation/:record" component={CheckInConfirmation} />
+              <Route path="/CheckIn/FinalConfirmation" component={FinalConfirmation} />
+              <Route path="/CheckIn/Error" component={ErrorPage} />
             </Route>
         </BrowserRouter>
       </React.Fragment>
