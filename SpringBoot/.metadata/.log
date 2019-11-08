@@ -3427,3 +3427,9 @@ java.lang.NullPointerException
 
 !ENTRY org.eclipse.m2e.logback.appender 4 0 2019-11-06 17:27:29.539
 !MESSAGE Unexpected URLConnection defaultUseCaches enabled
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2019-11-06 18:29:51.782
+!MESSAGE Unexpected URLConnection defaultUseCaches enabled
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2019-11-06 18:30:07.105
+!MESSAGE Unexpected URLConnection defaultUseCaches enabled

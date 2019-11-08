@@ -49,8 +49,9 @@ export default class login extends Component {
                 this.setState({loggedInMessage: ''})
                 if (this.state.option === 'staff')
                 this.props.history.push('/CheckIn/Staff')
-                else if (this.state.option === 'patient')
-                this.props.history.push('/CheckIn/Confirmation/' + this.state.person.id)
+                else if (this.state.option === 'patient') {
+                    this.props.history.push('/CheckIn/Confirmation/' + this.state.person.id)
+                }
             }
             else {
                 localStorage.removeItem('loggedIn')

@@ -63,7 +63,7 @@ public class PatientRestController {
 		catch (Exception e) {
 			response.setStatus(400);
 		}
-		return -1;
+		return true;
 	}
 	
 	@GetMapping(path="/getAllPatients")

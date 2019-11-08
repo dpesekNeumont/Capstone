@@ -35,7 +35,7 @@ public class PatientRestController {
 	
 	@GetMapping(path="/auth")
 	@CrossOrigin
-	public int checkCridentials(HttpServletRequest req, HttpServletResponse res) {
+	public boolean checkCridentials(HttpServletRequest req, HttpServletResponse res) {
 		String header = req.getHeader("Authorization");
 		return authenticate(header, res);
 	}
@@ -46,7 +46,7 @@ public class PatientRestController {
 		patientRepo.deleteById(patientId);
 	}
 	
-	private int authenticate(String header, HttpServletResponse response) {
+	private boolean authenticate(String header, HttpServletResponse response) {
 		try {
 			String rawCridentials = new String(Base64.getDecoder().decode(header.split(" ")[1]));
 			String[] parts = rawCridentials.split(":");
@@ -58,12 +58,11 @@ public class PatientRestController {
 			if (staffStream == null || staffStream.isEmpty()) {
 				throw new RuntimeException();
 			}
-			return staffStream.get(0).getId();
 		}
 		catch (Exception e) {
 			response.setStatus(400);
 		}
-		return -1;
+		return true;
 	}
 	
 	@GetMapping(path="/getAllPatients")
