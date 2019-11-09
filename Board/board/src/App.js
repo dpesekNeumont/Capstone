@@ -5,12 +5,12 @@ import './App.css';
 
 import Login from './Components/Login'
 import Board from './Components/Board'
-import Header from './Components/AuthHeader'
+import Header from './Components/Header'
 
 export default class App extends Component {
   constructor(props) {
     super(props)
-  
+    this.reRender = this.reRender.bind(this)
     this.state = {
        
     }
@@ -19,17 +19,18 @@ export default class App extends Component {
   reRender() {
     this.setState({})
   }
-
   
   render() {
     return (
+      <React.Fragment>
       <BrowserRouter>
         <Header reRender={this.reRender} />
         <Route path='/'>
-          <Route exact path='/Board' component={Login} />
-          <Route path='/Board/Display' component={Board}/>
+          <Route exact path='/Board/Login' render={() => <Login reRender={this.reRender}/>}/>
+          <Route path='/Board/Display' component={Board}/> 
         </Route>
       </BrowserRouter>
+      </React.Fragment>
     )
   }
 }
