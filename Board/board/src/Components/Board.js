@@ -43,8 +43,18 @@ export default class Board extends Component {
         }
         return (
             <div className='container'>
-                The Board
-                <p>Make the left 25% of the screen is where the appointments go, and the rest of the screen is auto-filled by the amount of rooms the clinic has</p>
+                <div className='split left'>
+                    <div className='centered'>
+                    <h3>Checked-In Appointments</h3>
+                    <h4>{this.state.messages.noAppts}</h4>
+                    </div>
+                </div>
+                <div className='split right'>
+                    <div className='centered'>
+
+                    <h3>All Rooms for Clinic</h3>
+                    </div>
+                </div>
             </div>
         )
     }

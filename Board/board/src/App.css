@@ -21,3 +21,34 @@
 .App-link {
   color: #09d3ac;
 }
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  margin-top: 3%;
+  padding-top: 20px;
+}
+
+.left {
+  left: 0;
+  width: 25%;
+  background-color: rgb(255, 155, 155);
+}
+
+.right {
+  right: 0;
+  width: 75%;
+  background-color: rgb(160, 154, 255);
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}

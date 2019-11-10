@@ -14,7 +14,7 @@ export default class Header extends Component {
 
     render() {
         return (
-            <div className='navbar navbar-dark bg-dark'>
+            <div className='navbar navbar-dark bg-dark header-height'>
                 <div className="row">
                     <img src={Logo} className="App-logo" alt="logo" />
                         <AuthHeader reRender={this.props.reRender} />
