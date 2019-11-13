@@ -19,11 +19,7 @@ public class ClinicRestController {
 	@CrossOrigin
 	public Clinic getClinicByName(@PathVariable String name) {
 		var clinics = clinicRepo.findAll();
-		System.out.println(clinics.get(0).getName());
-		var clinic = (Clinic) clinics.stream().filter(c -> c.getName().toUpperCase().equals(name.toUpperCase())).findFirst().orElse(null);
-		System.out.println(clinic.getName());
-		System.out.println(clinic.getNumOfRooms());
-		return clinic;
+		return (Clinic) clinics.stream().filter(c -> c.getName() == name);
 	}
 
 }

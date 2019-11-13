@@ -36,13 +36,13 @@
 .left {
   left: 0;
   width: 25%;
-  background-color: rgb(255, 155, 155);
+  background-color: peachpuff;
 }
 
 .right {
   right: 0;
   width: 75%;
-  background-color: rgb(160, 154, 255);
+  background-color: #5FA4B3;
 }
 
 .centered {
@@ -51,4 +51,27 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+}
+
+.appointmentPreview {
+  background-color: #FFE8D4;
+  border-radius: 20px;
+}
+
+.roomView {
+  border-radius: 20px;
+  height: 5%;
+  width: 100%;
+}
+
+.ready {
+  background-color: green;
+}
+
+.in-use {
+  background-color: yellow;
+}
+
+.needs-cleaning {
+  background-color: red;
 }

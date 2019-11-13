@@ -63,6 +63,7 @@ public class AppointmentRestController {
 		var appts = appRepo.findAll();
 		List<Appointment> finalAppts = new ArrayList<Appointment>();
 		Calendar c = Calendar.getInstance();
+		long dateNow = c.getTimeInMillis();
 		appts.stream().forEach(a -> {
 			Calendar ac = Calendar.getInstance();
 			ac.setTimeInMillis(a.getDate());

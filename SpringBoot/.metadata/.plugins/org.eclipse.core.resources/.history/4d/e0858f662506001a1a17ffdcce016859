@@ -25,70 +25,68 @@ import pesek.dean.capstoneapi.repositories.PatientJpaRepository;
 
 @RestController
 public class AppointmentRestController {
-
+	
 	@Autowired
 	private AppointmentJpaRepository appRepo;
 	@Autowired
 	private DoctorJpaRepository docRepo;
 	@Autowired
 	private PatientJpaRepository patientRepo;
-
-	@PostMapping(path = "/appointment")
+	
+	@PostMapping(path="/appointment")
 	@CrossOrigin
 	public void createAppointment(@RequestBody Appointment app, HttpServletRequest req) throws IOException {
 		app.setPatient(patientRepo.findById(app.getPatient().getId()).orElse(null));
 		app.setDoctor(docRepo.findById(app.getDoctor().getId()).orElse(null));
 		appRepo.saveAndFlush(app);
 	}
-
-	@GetMapping(path = "/appointment")
+	
+	@GetMapping(path="/appointment")
 	@CrossOrigin
 	public List<Appointment> getAllAppointments() {
-		return appRepo.findAll();
+		return appRepo.findAll();		
 	}
-
-	@GetMapping(path = "/appointment/{apptId}")
+	
+	@GetMapping(path="/appointment/{apptId}")
 	@CrossOrigin
 	public Appointment getAppointmentById(@PathVariable int apptId) {
 		Optional<Appointment> result = appRepo.findById(apptId);
 		return result.orElseThrow(() -> new RuntimeException());
 	}
 
-	// add a get for all appointments for that day
-
+	//add a get for all appointments for that day
+	
 	@SuppressWarnings("static-access")
-	@GetMapping(path = "/appointment/today")
+	@GetMapping(path="/appointment/today")
 	@CrossOrigin
 	public List<Appointment> getAllAppointmentsForToday() {
 		var appts = appRepo.findAll();
 		List<Appointment> finalAppts = new ArrayList<Appointment>();
 		Calendar c = Calendar.getInstance();
+		long dateNow = c.getTimeInMillis();
 		appts.stream().forEach(a -> {
 			Calendar ac = Calendar.getInstance();
 			ac.setTimeInMillis(a.getDate());
-			if (ac.MONTH == c.MONTH && ac.DAY_OF_WEEK == c.DAY_OF_WEEK && ac.YEAR == c.YEAR) {
-				System.out.println("added");
+			if (ac.MONTH == c.MONTH && ac.DAY_OF_WEEK == c.DAY_OF_WEEK && ac.YEAR == c.YEAR) 
 				finalAppts.add(a);
-			}
 		});
-		return finalAppts;
+		return null;
 	}
-
-	@GetMapping(path = "/appointment/patient/{patientId}")
+	
+	@GetMapping(path="/appointment/patient/{patientId}")
 	@CrossOrigin
 	public List<Appointment> getAppointmentByPatientId(@PathVariable int patientId) {
 		var appts = appRepo.findAll();
-		return (List<Appointment>) appts.stream().filter(a -> a.getPatient().getId() == patientId)
-				.collect(Collectors.toList());
+		return (List<Appointment>) appts.stream().filter(a -> a.getPatient().getId() == patientId).collect(Collectors.toList());
 	}
-
-	@DeleteMapping(path = "/appointment/{appointmentId}")
+	
+	@DeleteMapping(path="/appointment/{appointmentId}")
 	@CrossOrigin
 	public void deleteAppointmentById(@PathVariable int appointmentId) {
 		appRepo.deleteById(appointmentId);
-	}
-
-	@PatchMapping(path = "/appointment")
+	}	
+	
+	@PatchMapping(path="/appointment")
 	@CrossOrigin
 	public void updateAppointmentById(@RequestBody Appointment appt) {
 		appRepo.saveAndFlush(appt);
