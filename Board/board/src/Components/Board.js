@@ -51,8 +51,8 @@ export default class Board extends Component {
                 </div>
                 <div className='split right'>
                     <div className='centered'>
-                        <h3>All Rooms for Clinic</h3>
-                        <div>
+                        <h3>All Rooms for Family Clinic</h3>
+                        <div className='room-holder'>
                             {this.state.rooms}
                         </div>
                     </div>

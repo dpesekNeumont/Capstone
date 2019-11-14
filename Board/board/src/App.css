@@ -46,7 +46,9 @@
 }
 
 .centered {
+  padding-top: 20px;
   position: absolute;
+  height: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -60,8 +62,21 @@
 
 .roomView {
   border-radius: 20px;
-  height: 5%;
-  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000;
+  padding: 5px;
+  margin: 30px 15px;
+  width: 400px;
+  box-sizing: border-box;
+}
+
+.room-holder {
+  width: 1300px;
+  justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
 }
 
 .ready {
