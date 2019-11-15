@@ -67,7 +67,6 @@ public class AppointmentRestController {
 			Calendar ac = Calendar.getInstance();
 			ac.setTimeInMillis(a.getDate());
 			if (ac.MONTH == c.MONTH && ac.DAY_OF_WEEK == c.DAY_OF_WEEK && ac.YEAR == c.YEAR) {
-				System.out.println("added");
 				finalAppts.add(a);
 			}
 		});
