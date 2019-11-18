@@ -99,6 +99,8 @@ public class AppointmentRestController {
 	public void setFinished(@PathVariable int apptId) {
 		var appt = appRepo.findById(apptId).orElse(null);
 		appt.setFinished(true);
-		appRepo.saveAndFlush(appt);
+		//get thing by id
+		//update it
+		//save and flush
 	}
 }

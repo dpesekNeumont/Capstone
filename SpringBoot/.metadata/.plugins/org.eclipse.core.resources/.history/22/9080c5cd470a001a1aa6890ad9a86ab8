@@ -84,21 +84,12 @@ public class AppointmentRestController {
 	@DeleteMapping(path = "/appointment/{appointmentId}")
 	@CrossOrigin
 	public void deleteAppointmentById(@PathVariable int appointmentId) {
-		System.out.println(appointmentId);
 		appRepo.deleteById(appointmentId);
 	}
 
 	@PatchMapping(path = "/appointment")
 	@CrossOrigin
 	public void updateAppointmentById(@RequestBody Appointment appt) {
-		appRepo.saveAndFlush(appt);
-	}
-	
-	@PatchMapping(path = "/appointment/{apptId}")
-	@CrossOrigin
-	public void setFinished(@PathVariable int apptId) {
-		var appt = appRepo.findById(apptId).orElse(null);
-		appt.setFinished(true);
 		appRepo.saveAndFlush(appt);
 	}
 }

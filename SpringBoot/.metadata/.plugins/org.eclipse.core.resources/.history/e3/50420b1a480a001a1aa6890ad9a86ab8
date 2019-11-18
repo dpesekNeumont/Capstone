@@ -30,8 +30,6 @@ public class Appointment {
 	private boolean needsWorkPriorToAppt;
 	@Column(nullable=false)
 	private boolean checkedIn;
-	@Column(nullable=false)
-	private boolean finished;
 
 	public Appointment() {
 
@@ -114,13 +112,5 @@ public class Appointment {
 
 	public void setCheckedIn(boolean checkedIn) {
 		this.checkedIn = checkedIn;
-	}
-
-	public boolean isFinished() {
-		return finished;
-	}
-
-	public void setFinished(boolean finished) {
-		this.finished = finished;
 	}
 }

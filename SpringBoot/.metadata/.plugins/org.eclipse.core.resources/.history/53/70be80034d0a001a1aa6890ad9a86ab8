@@ -93,12 +93,4 @@ public class AppointmentRestController {
 	public void updateAppointmentById(@RequestBody Appointment appt) {
 		appRepo.saveAndFlush(appt);
 	}
-	
-	@PatchMapping(path = "/appointment/{apptId}")
-	@CrossOrigin
-	public void setFinished(@PathVariable int apptId) {
-		var appt = appRepo.findById(apptId).orElse(null);
-		appt.setFinished(true);
-		appRepo.saveAndFlush(appt);
-	}
 }
