@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View, Text} from 'react-native'
+import {View, Text, AsyncStorage} from 'react-native'
 
 export default class confirmation extends Component {
     constructor(props) {
@@ -10,8 +10,12 @@ export default class confirmation extends Component {
         }
     }
 
-    componentDidMount = () => {
-        this.id = setTimeout(() => this.props.navigation.navigate('Home'), 5000)
+    componentDidMount = async () => {
+        if (await AsyncStorage.getItem('loggedIn') === 'true') {
+        this.id = setTimeout(() => {this.props.navigation.navigate('Home'), AsyncStorage.setItem('loggedIn', false)}, 5000)
+        } else {
+            this.props.navigation.navigate('Home')
+        }
     }
     
     render() {

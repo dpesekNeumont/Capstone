@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Button, TextInput } from 'react-native'
+import { View, Text, Button, TextInput, AsyncStorage } from 'react-native'
 
 import AuthenticateLogin from './apiControllers/AuthenticateLogin'
 
@@ -9,7 +9,7 @@ export default class login extends Component {
 
         this.state = {
             option: '',
-            apiIP: '192.168.1.228',
+            apiIP: '10.10.16.145',
             username: '',
             password: '',
             people: [],
@@ -20,21 +20,24 @@ export default class login extends Component {
         }
     }
 
-    componentDidMount = () => {
+    componentDidMount = async () => {
         fetch(`http://${this.state.apiIP}:8080/staff`)
             .then(response => response.json())
             .then(data => this.setState({ people: data }))
+        if (await AsyncStorage.getItem('loggedIn') === 'true')
+            AsyncStorage.setItem('loggedIn', 'false')
     }
 
     login = () => {
         AuthenticateLogin(`http://${this.state.apiIP}:8080/users`, this.state.username, this.state.password)
-        .then(response => {
-            if (response.status === 200) {
-                this.props.navigation.navigate('CheckIn')
-            } else {
-                this.setState({messages: {invalidLogin: 'Invalid Cridentials, Please Try Again'}})
-            }
-        })
+            .then(response => {
+                if (response.status === 200) {
+                    AsyncStorage.setItem('loggedIn', 'true')
+                    this.props.navigation.navigate('CheckIn')
+                } else {
+                    this.setState({ messages: { invalidLogin: 'Invalid Cridentials, Please Try Again' } })
+                }
+            })
     }
 
     render() {
@@ -72,7 +75,7 @@ export default class login extends Component {
                         title='Login'
                         onPress={this.login}
                     />
-                    <Text style={{fontSize: 20, textAlign: 'center'}}>{this.state.results}</Text>
+                    <Text style={{ fontSize: 20, textAlign: 'center' }}>{this.state.results}</Text>
                 </View>
             </View>
         )

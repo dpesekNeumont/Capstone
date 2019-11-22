@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, AsyncStorage } from 'react-native'
 import { DateTime } from 'luxon'
 
 import GetData from './apiControllers/Getdata'
@@ -10,7 +10,7 @@ export default class preview extends Component {
         super(props)
 
         this.state = {
-            apiIP: '192.168.1.228',
+            apiIP: '10.10.16.145',
             appointments: [],
             messages: {
                 noAppt: ''
@@ -19,12 +19,16 @@ export default class preview extends Component {
         }
     }
 
-    componentDidMount = () => {
-        if (this.props.navigation.getParam('id') === undefined) {
-            this.props.navigation.navigate('CheckIn')
+    componentDidMount = async () => {
+        if (await AsyncStorage.getItem('loggedIn') === 'true') {
+            if (this.props.navigation.getParam('id') === undefined) {
+                this.props.navigation.navigate('CheckIn')
+            } else {
+                GetData(`http://${this.state.apiIP}:8080/appointment/patient`, this.props.navigation.getParam('id'))
+                    .then(response => this.compareTime(response))
+            }
         } else {
-            GetData(`http://${this.state.apiIP}:8080/appointment/patient`, this.props.navigation.getParam('id'))
-                .then(response => this.compareTime(response))
+            this.props.navigation.navigate('Home')
         }
     }
 
@@ -38,7 +42,7 @@ export default class preview extends Component {
         if (appts.length > 0) {
             this.setState({ appointments: appts })
         } else {
-            this.setState({ messages: {noAppt: 'There are no appointments scheduled for today'} })
+            this.setState({ messages: { noAppt: 'There are no appointments scheduled for today' } })
         }
     }
 
@@ -46,13 +50,13 @@ export default class preview extends Component {
         let appt = this.state.appointments[index]
         appt.needsWorkPriorToAppt = !appt.needsWorkPriorToAppt
         UpdateData(`http://${this.state.apiIP}:8080/appointment`, appt)
-        .then(response => {
-            if (response.status === 200) {
-               this.props.navigation.navigate('Home')
-            } else {
-                this.props.navigation.navigate('Error')
-            }
-        })
+            .then(response => {
+                if (response.status === 200) {
+                    this.props.navigation.navigate('Home')
+                } else {
+                    this.props.navigation.navigate('Error')
+                }
+            })
         this.props.navigation.navigate('Home')
     }
 
@@ -60,17 +64,17 @@ export default class preview extends Component {
         let appt = this.state.appointments[index]
         appt.checkedIn = !appt.checkedIn
         UpdateData(`http://${this.state.apiIP}:8080/appointment`, appt)
-        .then(response => {
-            if (response.status === 200) {
-                this.props.navigation.navigate('Confirmation')
-            } else {
-                this.props.navigation.navigate('Error')
-            }
-        })
+            .then(response => {
+                if (response.status === 200) {
+                    this.props.navigation.navigate('Confirmation')
+                } else {
+                    this.props.navigation.navigate('Error')
+                }
+            })
     }
 
     render() {
-        const {navigate} = this.props.navigation;
+        const { navigate } = this.props.navigation;
         return (
             <View style={{ flex: 1, alignItems: 'center', padding: 10 }}>
                 <View style={{ flex: 0.1, alignItems: 'center', padding: 10 }}>
@@ -78,11 +82,11 @@ export default class preview extends Component {
                 </View>
                 <View style={{ flex: 1, alignItems: 'center' }}>
                     <Text>{this.state.messages.noAppt}</Text>
-                    
-                    <Button 
+
+                    <Button
                         title='Home'
                         onPress={() => navigate('Home')}
-                        />
+                    />
                 </View>
                 <View style={{ flex: 1 }}>
                     {

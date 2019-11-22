@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import { View, Text, Button, TextInput, ScrollView } from 'react-native'
-import { HitTestResultTypes } from 'expo/build/AR'
+import { View, Text, Button, TextInput, ScrollView, AsyncStorage } from 'react-native'
+
 
 export default class checkIn extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            ApiIp: '192.168.1.228',
+            ApiIp: '10.10.16.145',
             patients: [],
             filteredPatients: [],
             firstName: '',
@@ -29,10 +29,16 @@ export default class checkIn extends Component {
         }
     }
 
-    componentDidMount = () => {
-        fetch(`http://${this.state.ApiIp}:8080/getAllPatients`)
-        .then(response => response.json())
-        .then(data => this.setState({patients: data}))
+    componentDidMount = async() => {
+        console.log('thingy')
+        if (await AsyncStorage.getItem('loggedIn') === 'true') {
+            console.log('thingy true')
+            fetch(`http://${this.state.ApiIp}:8080/getAllPatients`)
+            .then(response => response.json())
+            .then(data => this.setState({patients: data}))
+        } else {
+            this.props.navigation.navigate('Home')
+        }
     }
 
     searchPatient = () => {
