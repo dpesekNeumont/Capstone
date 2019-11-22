@@ -11,16 +11,18 @@ export default class Board extends Component {
 
     dragger = Dragula({
         accepts: function (el, target, source, sibling) {
+            console.log(el.id, source.id)
             return target.id.includes('Room')
         }
     }).on('drag', (el, source) => {
-        
+
     }).on('drop', (el, source, target, sibling) => {
         this.changeColorOnDrop(source.id)
+        this.changeTargetColor(el.id)
     });
 
     constructor(props) {
-        
+
         super(props)
 
         this.state = {
@@ -32,30 +34,35 @@ export default class Board extends Component {
         }
     }
 
-    componentDidMount = (event) => {
+    componentDidMount = () => {
         GetData('http://localhost:8080/clinics', 'family')
             .then(response => this.makeRooms(response))
-        this.interval = setInterval(this.resetList, 120000)
+        this.interval = setInterval(this.resetList, 1000000000)
+        //set the interval to an absurd amount of time for presentation
         this.resetList()
+    }
+    
+    changeTargetColor = (id) => {
+        document.getElementById(id).style.backgroundColor = 'rgba(0,0,0,0)';
     }
 
     changeColorOnDrop = (id) => {
-        // console.log(id)
-        document.getElementById(id).style.backgroundColor = "red";
+        document.getElementById(id).style.backgroundColor = "rgb(27, 73, 144)";
     }
 
     changeRoomColor = (event) => {
-        console.log(event.target.parentElement)
-        if (document.getElementById(event.target.parentElement.id).style.backgroundColor === 'red') {
-            document.getElementById(event.target.parentElement.id).style.backgroundColor = 'yellow'
-        } else if(document.getElementById(event.target.parentElement.id).style.backgroundColor === 'yellow') {
+        console.log(document.getElementById(event.target.parentElement.id).style.backgroundColor)
+        if (document.getElementById(event.target.parentElement.id).style.backgroundColor === 'rgb(27, 73, 144)') {
+            document.getElementById(event.target.parentElement.id).style.backgroundColor = 'rgb(166, 191, 239)'
+            document.getElementById(event.target.parentElement.id).style.color = 'black'
+            document.getElementById(event.target.parentElement.id).children[1].style.color = 'black'
+        } else if (document.getElementById(event.target.parentElement.id).style.backgroundColor === 'rgb(166, 191, 239)') {
             let thing = document.getElementById(event.target.parentElement.id).children[1].id.split('t')[1]
-            UpdateData('http://localhost:8080/appointment',thing)
+            UpdateData('http://localhost:8080/appointment', thing)
+            document.getElementById(event.target.parentElement.id).style.color = 'white'
             document.getElementById(event.target.parentElement.id).children[1].remove()
-            document.getElementById(event.target.parentElement.id).style.backgroundColor = '#32CD32'
+            document.getElementById(event.target.parentElement.id).style.backgroundColor = 'rgb(36, 148, 36)'
         }
-        
-        //change the color of the room with that id
     }
 
     makeRooms = (clinic) => {
@@ -81,17 +88,17 @@ export default class Board extends Component {
             let guy = DateTime.fromMillis(a.date)
             return (current.month === guy.month && current.day === guy.day && current.year === guy.year && a.checkedIn && (!a.finished))
         })
-        if (appts.length > 0) {
-            this.setState({ appointments: appts })
-        } else {
-            this.setState({ appointments: appts })
+        this.setState({ appointments: appts })
+        console.log(appts)
+        if (appts.length === 0) {
             this.setState({ messages: { noAppts: 'THERE ARE NO APPOINTMENTS TO SHOW' } })
+        } else {
+            this.setState({ messages: {noAppts: ''}})
         }
     }
 
     dragulaDecorator = (componentBackingInstance) => {
         if (componentBackingInstance) {
-            // ReactDOM.findDOMNode(this).parentNode.dragger.containers.push(componentBackingInstance);
             this.dragger.containers.push(componentBackingInstance);
         }
     };
@@ -107,7 +114,7 @@ export default class Board extends Component {
                 <div className='split left'>
                     <div className='centered'>
                         <div>
-                            <h3 className='board-header'>Checked-In Appointments</h3>
+                            <h2 className='board-header'>Checked-In Appointments</h2>
                             <h3>{this.state.messages.noAppts}</h3>
                             <div ref={this.dragulaDecorator} id='apptHolder'>
                                 {
@@ -126,7 +133,7 @@ export default class Board extends Component {
                 </div>
                 <div className='split right'>
                     <div className='centered'>
-                        <h3 className='board-header'>All Rooms for Family Clinic</h3>
+                        <h2 className='board-header'>All Rooms for Family Clinic</h2>
                         <div className='room-holder' id='roomHolder'>
                             {this.state.rooms}
                         </div>

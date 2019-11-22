@@ -23,10 +23,12 @@
 }
 
 .board-header {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid white;
 }
 
 .split {
+  font-family: 'Kanit', sans-serif;
+  color: white;
   height: 100%;
   position: fixed;
   z-index: 1;
@@ -39,13 +41,13 @@
 .left {
   left: 0;
   width: 25%;
-  background-color: peachpuff;
+  background-color: #0A0B2E;
 }
 
 .right {
   right: 0;
   width: 75%;
-  background-color: #ffdab9;
+  background-color: #0A0B2E;
 }
 
 .centered {
@@ -59,7 +61,10 @@
 }
 
 .appointmentPreview {
-  background-color: #5FA4B3;
+  background-color: #1B4990;
+  color: white;
+  font-size: 20px;
+  border: 2px white solid;
   border-radius: 20px;
   margin: 10px 0px;
 }
@@ -67,8 +72,8 @@
 .roomView {
   border-radius: 20px;
   align-items: center;
+  border: 2px white solid;
   justify-content: center;
-  border: 1px solid #000;
   padding: 5px;
   margin: 30px 15px;
   width: 400px;
@@ -85,7 +90,7 @@
 }
 
 .ready {
-  background-color: #32CD32;
+  background-color: rgb(36, 148, 36);
 }
 
 .in-use {

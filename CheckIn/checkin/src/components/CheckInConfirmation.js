@@ -21,7 +21,6 @@ export default class CheckInConfirmation extends Component {
         let record = this.props.match.params.record
         GetData('http://localhost:8080/appointment/patient', record)
             .then(response => this.compareTime(response))
-        // this.compareTime(appts)
     }
 
     compareTime = (appts) => {
@@ -92,7 +91,6 @@ export default class CheckInConfirmation extends Component {
                                         </div>
                                     )
                                 } else {
-
                                     return (
                                         <div key={index + 10}>
                                             <h3>You Must See Either the Pharmacy or Get Labs Done Prior to Your Appointment</h3>

@@ -26,7 +26,7 @@ export default class UpdateAppointmentInformation extends Component {
     }
 
     onCancelClicked = () => {
-        this.props.history.push('Action')
+        this.props.history.push('/Action')
     }
 
     onDeleteClicked = () => {

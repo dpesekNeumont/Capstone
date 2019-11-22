@@ -15,14 +15,14 @@ export default class UpdateAppointment extends Component {
     }
 
     onCancelClicked = () => {
-        this.props.history.push('Action');
+        this.props.history.push('/Action');
     }
 
     onSearchClicked() { 
         let firstName = this.state.firstName
         let lastName = this.state.lastName
         let matchedAppts = this.state.allAppts.filter(function (appointment) {
-            return (appointment.patient.firstName === firstName && appointment.patient.lastName === lastName)
+            return (appointment.patient.firstName === firstName && appointment.patient.lastName === lastName && (!appointment.finished))
         })
         this.setState({ filteredAppt: matchedAppts })
     }
