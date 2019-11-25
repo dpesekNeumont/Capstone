@@ -7,7 +7,7 @@ export default class checkIn extends Component {
         super(props)
 
         this.state = {
-            ApiIp: '10.10.16.145',
+            ApiIp: '192.168.1.228',
             patients: [],
             filteredPatients: [],
             firstName: '',

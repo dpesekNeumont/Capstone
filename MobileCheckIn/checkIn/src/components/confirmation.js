@@ -12,7 +12,7 @@ export default class confirmation extends Component {
 
     componentDidMount = async () => {
         if (await AsyncStorage.getItem('loggedIn') === 'true') {
-        this.id = setTimeout(() => {this.props.navigation.navigate('Home'), AsyncStorage.setItem('loggedIn', false)}, 5000)
+        this.id = setTimeout(() => {this.props.navigation.navigate('Home'), AsyncStorage.setItem('loggedIn', 'false')}, 5000)
         } else {
             this.props.navigation.navigate('Home')
         }

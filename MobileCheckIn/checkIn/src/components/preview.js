@@ -10,7 +10,7 @@ export default class preview extends Component {
         super(props)
 
         this.state = {
-            apiIP: '10.10.16.145',
+            apiIP: '192.168.1.228',
             appointments: [],
             messages: {
                 noAppt: ''

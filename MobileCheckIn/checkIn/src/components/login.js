@@ -9,7 +9,7 @@ export default class login extends Component {
 
         this.state = {
             option: '',
-            apiIP: '10.10.16.145',
+            apiIP: '192.168.1.228',
             username: '',
             password: '',
             people: [],
