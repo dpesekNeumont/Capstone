@@ -10,7 +10,7 @@ export default class preview extends Component {
         super(props)
 
         this.state = {
-            apiIP: '192.168.1.228',
+            apiIP: '192.168.137.1',
             appointments: [],
             messages: {
                 noAppt: ''
@@ -80,22 +80,21 @@ export default class preview extends Component {
                 <View style={{ flex: 0.1, alignItems: 'center', padding: 10 }}>
                     <Text style={{ fontSize: 18 }}>Check-In</Text>
                 </View>
-                <View style={{ flex: 1, alignItems: 'center' }}>
+                <View style={{ flex: 0.1, alignItems: 'center' }}>
                     <Text>{this.state.messages.noAppt}</Text>
-
                     <Button
                         title='Home'
                         onPress={() => navigate('Home')}
                     />
                 </View>
-                <View style={{ flex: 1 }}>
+                <View style={{ flex: 0.1 }}>
                     {
                         this.state.appointments.map((p, index) => {
-                            let base = <View className='appointmentInformationDisplay' key={index}>
-                                <Text>Date: {DateTime.fromMillis(p.date).toLocaleString({ weekday: 'short', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' })}</Text>
-                                <Text>Doctor's Name: {p.doctor.firstName} {p.doctor.lastName}</Text>
-                                <Text>Patient's Name: {p.patient.firstName} {p.patient.lastName}</Text>
-                                <Text>Needs Work Prior To Appointment: {`${p.needsWorkPriorToAppt}`}</Text>
+                            let base = <View key={index}>
+                                <Text style={{ fontSize: 20, textAlign: 'center', padding: 5 }}>Date: {DateTime.fromMillis(p.date).toLocaleString({ weekday: 'short', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' })}</Text>
+                                <Text style={{ fontSize: 20, textAlign: 'center', padding: 5 }}>Doctor's Name: {p.doctor.firstName} {p.doctor.lastName}</Text>
+                                <Text style={{ fontSize: 20, textAlign: 'center', padding: 5 }}>Patient's Name: {p.patient.firstName} {p.patient.lastName}</Text>
+                                <Text style={{ fontSize: 20, textAlign: 'center', padding: 5 }}>Needs Work Prior To Appointment: {`${p.needsWorkPriorToAppt}`}</Text>
                             </View>
                             if (p.needsWorkPriorToAppt === false) {
                                 return (
@@ -110,7 +109,7 @@ export default class preview extends Component {
                             } else {
                                 return (
                                     <View key={index + 10}>
-                                        <Text>You Must See Either the Pharmacy or Get Labs Done Prior to Your Appointment</Text>
+                                        <Text style={{ fontSize: 20, fontWeight: 'bold', margin: 10, textAlign: 'center' }}>You Must See Either the Pharmacy or Get Labs Done Prior to Your Appointment</Text>
                                         {base}
                                         <Button
                                             title='Acknowledge'

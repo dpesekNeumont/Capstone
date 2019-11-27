@@ -9,7 +9,7 @@ export default class login extends Component {
 
         this.state = {
             option: '',
-            apiIP: '192.168.1.228',
+            apiIP: '192.168.137.1',
             username: '',
             password: '',
             people: [],
@@ -44,11 +44,11 @@ export default class login extends Component {
         return (
             <View style={{ flex: 1, alignItems: 'center', padding: 10 }}>
                 <View style={{ flex: 0.1, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontSize: 18 }}>Login</Text>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Login</Text>
                     <Text style={{ fontSize: 18 }}>{this.state.messages.invalidLogin}</Text>
                 </View>
                 <View style={{ flex: 0.1, paddingLeft: 10, paddingRight: 10, flexDirection: 'row' }}>
-                    <Text style={{ flex: 0.7 }}>Username</Text>
+                    <Text style={{ flex: 0.7, fontSize: 18 }}>Username:</Text>
                     <TextInput
                         onChangeText={(username) => this.setState({ username })}
                         style={{
@@ -59,7 +59,7 @@ export default class login extends Component {
                     />
                 </View>
                 <View style={{ flex: 0.1, paddingLeft: 10, paddingRight: 10, flexDirection: 'row' }}>
-                    <Text style={{ flex: 0.7 }}>Password: </Text>
+                    <Text style={{ flex: 0.7, fontSize: 18 }}>Password: </Text>
                     <TextInput
                         onChangeText={(password) => this.setState({ password })}
                         style={{

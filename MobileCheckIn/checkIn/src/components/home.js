@@ -17,7 +17,7 @@ export default class home extends Component {
     render() {
         return (
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                <Text>Check-In</Text>
+                <Text style={{fontSize: 20, fontWeight: 'bold'}}>Check-In</Text>
                 <Button 
                 title='Staff Login'
                 onPress={this.staffLoginClicked}/>

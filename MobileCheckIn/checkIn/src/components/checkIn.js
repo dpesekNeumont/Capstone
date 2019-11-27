@@ -7,7 +7,7 @@ export default class checkIn extends Component {
         super(props)
 
         this.state = {
-            ApiIp: '192.168.1.228',
+            ApiIp: '192.168.137.1',
             patients: [],
             filteredPatients: [],
             firstName: '',
@@ -29,13 +29,11 @@ export default class checkIn extends Component {
         }
     }
 
-    componentDidMount = async() => {
-        console.log('thingy')
+    componentDidMount = async () => {
         if (await AsyncStorage.getItem('loggedIn') === 'true') {
-            console.log('thingy true')
             fetch(`http://${this.state.ApiIp}:8080/getAllPatients`)
-            .then(response => response.json())
-            .then(data => this.setState({patients: data}))
+                .then(response => response.json())
+                .then(data => this.setState({ patients: data }))
         } else {
             this.props.navigation.navigate('Home')
         }
@@ -49,14 +47,14 @@ export default class checkIn extends Component {
     }
 
     render() {
-        const {navigate} = this.props.navigation;
+        const { navigate } = this.props.navigation;
         return (
             <View style={{ flex: 1, alignItems: 'center', padding: 10 }}>
                 <View style={{ flex: 0.1, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontSize: 18 }}>Patient Search</Text>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Patient Search</Text>
                 </View>
                 <View style={{ flex: 0.1, paddingLeft: 10, paddingRight: 10, flexDirection: 'row' }}>
-                    <Text style={{ flex: 0.7 }}>First Name:</Text>
+                    <Text style={{ flex: 0.7, fontSize: 18 }}>First Name:</Text>
                     <TextInput
                         onChangeText={(firstName) => this.setState({ firstName })}
                         style={{
@@ -67,7 +65,7 @@ export default class checkIn extends Component {
                     />
                 </View>
                 <View style={{ flex: 0.1, paddingLeft: 10, paddingRight: 10, flexDirection: 'row' }}>
-                    <Text style={{ flex: 0.7 }}>Last Name: </Text>
+                    <Text style={{ flex: 0.7, fontSize: 18 }}>Last Name: </Text>
                     <TextInput
                         onChangeText={(lastName) => this.setState({ lastName })}
                         style={{
@@ -77,26 +75,26 @@ export default class checkIn extends Component {
                         }}
                     />
                 </View>
-                <View style={{ flex: 0.5, flexDirection: 'column' }}>
+                <View style={{ flex: 0.1, flexDirection: 'column', paddingBottom: 20 }}>
                     <Button
                         title='Search'
                         onPress={this.searchPatient}
                     />
-                    <Text style={{ fontSize: 20, textAlign: 'center' }}>{this.state.results}</Text>
+                    <Text style={{ fontSize: 20, textAlign: 'center', fontWeight: 'bold' }}>Search Results:</Text>
                 </View>
-                <ScrollView style={{ flex: 1 }}>
+                <ScrollView style={{ flex: 0.1 }}>
                     {
                         this.state.filteredPatients.map((p, index) => {
                             return (
-                                <View style={{flex: 1}} key={index}>
-                                    <Text style={{padding: 5}}>First Name: {p.firstName}</Text>
-                                    <Text style={{padding: 5}}>Last Name: {p.lastName}</Text>
-                                    <Text style={{padding: 5}}>Phone Number: {p.primaryPhoneNumber.areaCode}-{p.primaryPhoneNumber.middleNums}-{p.primaryPhoneNumber.lastFour}</Text>
-                                    <Text style={{padding: 5}}>Email: {p.primaryEmail.username}@{p.primaryEmail.domain}</Text>
-                                    <Button 
-                                        style={{padding: 5}}
+                                <View style={{ flex: 1 }} key={index}>
+                                    <Text style={{ fontSize: 20, textAlign: 'center', padding: 5 }}>First Name: {p.firstName}</Text>
+                                    <Text style={{ fontSize: 20, textAlign: 'center', padding: 5 }}>Last Name: {p.lastName}</Text>
+                                    <Text style={{ fontSize: 20, textAlign: 'center', padding: 5 }}>Phone Number: {p.primaryPhoneNumber.areaCode}-{p.primaryPhoneNumber.middleNums}-{p.primaryPhoneNumber.lastFour}</Text>
+                                    <Text style={{ fontSize: 20, textAlign: 'center', padding: 5 }}>Email: {p.primaryEmail.username}@{p.primaryEmail.domain}</Text>
+                                    <Button
+                                        style={{ padding: 5 }}
                                         title='Pick'
-                                        onPress={() => navigate('Preview', { 'id': p.id})}
+                                        onPress={() => navigate('Preview', { 'id': p.id })}
                                     />
                                 </View>
                             )
