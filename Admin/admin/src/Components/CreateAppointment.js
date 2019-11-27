@@ -238,9 +238,9 @@ export default class CreateAppointment extends Component {
             return <React.Fragment>
                 <div className='container'>
                     <h3>Appointment Details:</h3>
-                    <p>Appointment Date/Time: <input type='datetime-local' onChange={({ target: { value: date } }) => this.setState({ date })} value={this.state.date} /></p>
+                    <p className='input-fields'>Appointment Date/Time: <input type='datetime-local' onChange={({ target: { value: date } }) => this.setState({ date })} value={this.state.date} /></p>
                     <div className='horizontal'>
-                        <p>Needs Work Prior To Appointment:</p>
+                        <p className='input-fields'>Needs Work Prior To Appointment:</p>
                         <input type='checkbox' onChange={this.needsWorkChanged} />
                     </div>
                     <div className='actions'>

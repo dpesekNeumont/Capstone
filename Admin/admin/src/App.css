@@ -53,6 +53,7 @@
 
 .input-fields {
   margin: 5px 0;
+  font-size: larger;
 }
 
 .error-message {
@@ -78,10 +79,12 @@ input[type="checkbox"]{
   margin-top: 1px;
   margin-left: 10px;
 }
+
 input:checked[type="checkbox"]
 {
 background: gray;
 }
+
 input[type="checkbox"]:before
 {
 content: '';
@@ -96,6 +99,7 @@ transform: scale(1.1);
 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 transition: .5s;
 }
+
 input:checked[type="checkbox"]:before
 {
 left: 30px;
@@ -104,4 +108,8 @@ left: 30px;
 .horizontal {
   display: flex;
   flex-direction: row;
+}
+
+.search-results {
+  font-size: larger;
 }
