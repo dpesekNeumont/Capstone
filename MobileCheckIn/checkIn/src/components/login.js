@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, Button, TextInput, AsyncStorage } from 'react-native'
 
 import AuthenticateLogin from './apiControllers/AuthenticateLogin'
+const IP = require('./ip.json')
 
 export default class login extends Component {
     constructor(props) {
@@ -9,7 +10,7 @@ export default class login extends Component {
 
         this.state = {
             option: '',
-            apiIP: '192.168.137.1',
+            apiIP: IP[0].ip,
             username: '',
             password: '',
             people: [],

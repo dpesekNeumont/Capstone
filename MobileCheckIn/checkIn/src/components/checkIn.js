@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { View, Text, Button, TextInput, ScrollView, AsyncStorage } from 'react-native'
 
+const IP = require('./ip.json')
 
 export default class checkIn extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            ApiIp: '192.168.137.1',
+            ApiIp: IP[0].ip,
             patients: [],
             filteredPatients: [],
             firstName: '',

@@ -4,13 +4,14 @@ import { DateTime } from 'luxon'
 
 import GetData from './apiControllers/Getdata'
 import UpdateData from './apiControllers/UpdateData'
+const IP = require('./ip.json')
 
 export default class preview extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            apiIP: '192.168.137.1',
+            apiIP: IP[0].ip,
             appointments: [],
             messages: {
                 noAppt: ''
@@ -82,10 +83,6 @@ export default class preview extends Component {
                 </View>
                 <View style={{ flex: 0.1, alignItems: 'center' }}>
                     <Text>{this.state.messages.noAppt}</Text>
-                    <Button
-                        title='Home'
-                        onPress={() => navigate('Home')}
-                    />
                 </View>
                 <View style={{ flex: 0.1 }}>
                     {

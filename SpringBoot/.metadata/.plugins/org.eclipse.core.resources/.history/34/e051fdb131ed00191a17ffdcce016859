@@ -1,5 +1,0 @@
-package pesek.dean.capstoneapi.repositories;
-
-public interface DoctorJpaRepository {
-
-}
